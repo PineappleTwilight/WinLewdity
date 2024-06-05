@@ -1,0 +1,96 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup Label="Globals">
+		<Platforms>AnyCPU;x64;x86</Platforms>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(PlatformTarget)' == 'x86'">
+		<RuntimeIdentifier Condition="'$(RuntimeIdentifier)' == ''">win-x86</RuntimeIdentifier>
+		<SelfContained Condition="'$(SelfContained)' == ''">false</SelfContained>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(PlatformTarget)' == 'x64'">
+		<RuntimeIdentifier Condition="'$(RuntimeIdentifier)' == ''">win-x64</RuntimeIdentifier>
+		<SelfContained Condition="'$(SelfContained)' == ''">false</SelfContained>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(PlatformTarget)' == 'arm64'">
+		<RuntimeIdentifier Condition="'$(RuntimeIdentifier)' == ''">win-arm64</RuntimeIdentifier>
+		<SelfContained Condition="'$(SelfContained)' == ''">false</SelfContained>
+	</PropertyGroup>
+	
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWindowsForms>true</UseWindowsForms>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<ApplicationIcon>dolp.ico</ApplicationIcon>
+		<AssemblyName>DegreesOfLewdityPlus</AssemblyName>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Content Include="dolp.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.WindowsDesktop.App" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Buttplug" Version="3.0.1" />
+		<PackageReference Include="Buttplug.Client.Connectors.WebsocketConnector" Version="3.0.1" />
+		<PackageReference Include="CefSharp.Common.NETCore" Version="124.3.80" />
+		<PackageReference Include="CefSharp.WinForms.NETCore" Version="124.3.80" />
+		<PackageReference Include="DiscordRichPresence" Version="1.2.1.24" />
+		<PackageReference Include="LibGit2Sharp" Version="0.30.0" />
+		<PackageReference Include="NAudio" Version="2.2.1" />
+		<PackageReference Include="protobuf-net" Version="3.2.30" />
+		<PackageReference Include="Serilog" Version="3.1.1" />
+		<PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
+		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Assets\**">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="assets\cfg\.placeholder" />
+		<None Remove="Assets\img\previews\bees_hikarifemale_preview.png" />
+		<None Remove="Assets\img\previews\bees_hikarimale_preview.png" />
+		<None Remove="Assets\img\previews\bees_okbd_preview.png" />
+		<None Remove="Assets\img\previews\bees_paril_hairextended_preview.png" />
+		<None Remove="Assets\img\previews\bees_preview.png" />
+		<None Remove="Assets\img\previews\bees_wax_preview.png" />
+		<None Remove="Assets\img\previews\lllymasc_preview.png" />
+		<None Remove="Assets\img\previews\mizz_preview.png" />
+		<None Remove="Assets\img\previews\mvcr_preview.png" />
+		<None Remove="Assets\img\previews\susato_preview.png" />
+		<None Remove="Assets\img\previews\vanilla_preview.png" />
+		<None Remove="Assets\music\combat\The Only Thing They Fear Is Baily.wav" />
+		<None Remove="Assets\music\combat_consensual\MEGALOVANIA.wav" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Assets\cfg\" />
+		<Folder Include="Assets\sfx\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Properties\Resources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="Properties\Resources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+</Project>

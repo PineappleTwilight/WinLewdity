@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinLewdity-GUI", "WinLewdity\WinLewdity-GUI.csproj", "{68914A43-6D20-4417-BF66-1E71ACEA7D30}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{860B05A6-B908-45C6-8A2E-786A79A851C1}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.md = LICENSE.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{68914A43-6D20-4417-BF66-1E71ACEA7D30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68914A43-6D20-4417-BF66-1E71ACEA7D30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68914A43-6D20-4417-BF66-1E71ACEA7D30}.Debug|x64.ActiveCfg = Debug|x64
+		{68914A43-6D20-4417-BF66-1E71ACEA7D30}.Debug|x64.Build.0 = Debug|x64
+		{68914A43-6D20-4417-BF66-1E71ACEA7D30}.Debug|x86.ActiveCfg = Debug|x86
+		{68914A43-6D20-4417-BF66-1E71ACEA7D30}.Debug|x86.Build.0 = Debug|x86
+		{68914A43-6D20-4417-BF66-1E71ACEA7D30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68914A43-6D20-4417-BF66-1E71ACEA7D30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68914A43-6D20-4417-BF66-1E71ACEA7D30}.Release|x64.ActiveCfg = Release|x64
+		{68914A43-6D20-4417-BF66-1E71ACEA7D30}.Release|x64.Build.0 = Release|x64
+		{68914A43-6D20-4417-BF66-1E71ACEA7D30}.Release|x86.ActiveCfg = Release|x86
+		{68914A43-6D20-4417-BF66-1E71ACEA7D30}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6FC93FDC-090F-4FF4-A9FA-25D7246150FD}
+	EndGlobalSection
+EndGlobal
