@@ -229,26 +229,6 @@ namespace SimpleHtmlViewer
         {
             if (e.Frame.IsMain)
             {
-                // Create devtools
-                JavascriptUtils.DevTools = gameBrowser.GetDevToolsClient();
-
-                // Hook events
-                JavascriptUtils.DevTools.DOM.ChildNodeInserted += DOM_ChildNodeInserted;
-                JavascriptUtils.DevTools.DOM.DocumentUpdated += DOM_DocumentUpdated;
-
-                // Get document
-                GetDocumentResponse document = await JavascriptUtils.DevTools.DOM.GetDocumentAsync();
-
-                //Hook any javascript events here.
-                gameBrowser.ExecuteScriptAsync(@"
-                    // Place JS event hooks below
-
-                    // Hook click event for any elements. e.target is the element in question.
-                    document.addEventListener('click', function(e) {
-                        //alert(e.target.tagName)
-                        ddolp.doBloop()
-                    }, false);
-	            ");
             }
         }
 
@@ -295,6 +275,24 @@ namespace SimpleHtmlViewer
 
                 // Inject JS binder
                 JavascriptUtils.ExecuteJavascriptAsync($"await CefSharp.BindObjectAsync(\"ddolp\");");
+
+                // Create devtools
+                JavascriptUtils.DevTools = gameBrowser.GetDevToolsClient();
+
+                // Hook events
+                JavascriptUtils.DevTools.DOM.ChildNodeInserted += DOM_ChildNodeInserted;
+                JavascriptUtils.DevTools.DOM.DocumentUpdated += DOM_DocumentUpdated;
+
+                //Hook any javascript events here.
+                gameBrowser.ExecuteScriptAsync(@"
+                    // Place JS event hooks below
+
+                    // Hook click event for any elements. e.target is the element in question.
+                    document.addEventListener('click', function(e) {
+                        //alert(e.target.tagName)
+                        ddolp.doBloop()
+                    }, false);
+	            ");
             }
         }
 

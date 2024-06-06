@@ -24,6 +24,10 @@ namespace SimpleHtmlViewer
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Executes a Windows command.
+        /// </summary>
+        /// <param name="command"></param>
         private static void ExecuteCommand(string command)
         {
             int exitCode;
@@ -53,106 +57,30 @@ namespace SimpleHtmlViewer
             process.Close();
         }
 
-        private static void CloneDirectory(string root, string dest)
-        {
-            foreach (var directory in Directory.GetDirectories(root))
-            {
-                //Get the path of the new directory
-                var newDirectory = Path.Combine(dest, Path.GetFileName(directory));
-                //Create the directory if it doesn't already exist
-                Directory.CreateDirectory(newDirectory);
-                //Recursively clone the directory
-                CloneDirectory(directory, newDirectory);
-            }
-
-            foreach (var file in Directory.GetFiles(root))
-            {
-                File.Copy(file, Path.Combine(dest, Path.GetFileName(file)));
-            }
-        }
-
+        /// <summary>
+        /// Copies all files from a source directory to a target directory. Includes descendants.
+        /// </summary>
+        /// <param name="sourcePath"></param>
+        /// <param name="targetPath"></param>
         public static void CopyFilesRecursively(string sourcePath, string targetPath)
         {
-            //Now Create all of the directories
+            // Create all of the directories
             foreach (string dirPath in Directory.GetDirectories(sourcePath, "*", SearchOption.AllDirectories))
             {
                 Directory.CreateDirectory(dirPath.Replace(sourcePath, targetPath));
             }
 
-            //Copy all the files & Replaces any files with the same name
+            // Copy the files & replace any files with the same name
             foreach (string newPath in Directory.GetFiles(sourcePath, "*.*", SearchOption.AllDirectories))
             {
                 File.Copy(newPath, newPath.Replace(sourcePath, targetPath), true);
             }
         }
 
-        private void Updater_Load(object sender, EventArgs e)
-        {
-            // Check if we are debugging
-            if (File.Exists("./.debug"))
-            {
-                Globals.DebugMode = true;
-            }
-
-            // Init logging service
-            AppLogger.InitializeLogger();
-
-            if (!Globals.DebugMode)
-            {
-                this.Text = Globals.AppName + " Updater v" + Globals.AppVersion;
-            }
-            else
-            {
-                this.Text = Globals.AppName + " Updater v" + Globals.AppVersion + "-dev";
-            }
-
-            if (!Directory.Exists("./game"))
-            {
-                Directory.CreateDirectory("./game");
-            }
-
-            if (!Directory.Exists("./source"))
-            {
-                Directory.CreateDirectory("./source");
-            }
-
-            if (!Directory.Exists("./logs"))
-            {
-                Directory.CreateDirectory("./logs");
-            }
-
-            AppLogger.LogInfo("Starting app...");
-
-            if (File.Exists("./Assets/cfg/prefs.frot"))
-            {
-                AppLogger.LogDebug("Preferences found! They will be loaded instead of initializing new ones!");
-                using (var file = File.OpenRead("./Assets/cfg/prefs.frot"))
-                {
-                    Globals.userPreferences = Serializer.Deserialize<Preferences>(file);
-                }
-            }
-            else
-            {
-                AppLogger.LogDebug("This appears to be a first run, so a new preferences instance has been created!");
-
-                // Create new preferences
-                Globals.userPreferences = new Preferences();
-                Globals.userPreferences.preferredImagePack = ImagePack.Vanilla;
-                Globals.userPreferences.enableMusic = true;
-                Globals.userPreferences.enableSfx = true;
-                Globals.userPreferences.enableSexToys = true;
-                Globals.userPreferences.globalVolume = 0.5f;
-            }
-
-            // Init sex toy server
-            if (Globals.userPreferences.enableSexToys)
-            {
-                MasterSextoyServer sextoyServer = new MasterSextoyServer();
-                Globals.sextoyServer = sextoyServer;
-            }
-        }
-
-        private void updateButton_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Attempts to update the game dynamically.
+        /// </summary>
+        public void UpdateGame()
         {
             updateButton.Enabled = false;
             startButton.Enabled = false;
@@ -303,7 +231,7 @@ namespace SimpleHtmlViewer
 
                 // Scan game files and replace DoLP versions
                 string compiledHtml = File.ReadAllText("./game/index.html");
-                File.WriteAllText("./game/index.html", compiledHtml.Replace("DoLP version", $"DoLP {buildVersionText}"));
+                File.WriteAllText("./game/index.html", compiledHtml.Replace("DoLP version", $"WinLewdity {buildVersionText}"));
 
                 // Clean up
                 Invoke(() =>
@@ -314,6 +242,92 @@ namespace SimpleHtmlViewer
                     musicFolderButton.Enabled = true;
                 });
             }).Start();
+        }
+
+        /// <summary>
+        /// Form load event.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Updater_Load(object sender, EventArgs e)
+        {
+            // Check if we are debugging
+            if (File.Exists("./.debug"))
+            {
+                Globals.DebugMode = true;
+            }
+
+            // Init logging service
+            AppLogger.InitializeLogger();
+
+            // Fancy update form title change
+            if (!Globals.DebugMode)
+            {
+                this.Text = Globals.AppName + " Updater v" + Globals.AppVersion;
+            }
+            else
+            {
+                this.Text = Globals.AppName + " Updater v" + Globals.AppVersion + " (Debug Mode)";
+            }
+
+            // Create game folder
+            if (!Directory.Exists("./game"))
+            {
+                Directory.CreateDirectory("./game");
+            }
+
+            // Create source folder
+            if (!Directory.Exists("./source"))
+            {
+                Directory.CreateDirectory("./source");
+            }
+
+            // Create logs folder
+            if (!Directory.Exists("./logs"))
+            {
+                Directory.CreateDirectory("./logs");
+            }
+
+            AppLogger.LogInfo("Starting app...");
+
+            // Check for existing user preferences
+            if (File.Exists("./Assets/cfg/prefs.frot"))
+            {
+                AppLogger.LogDebug("Preferences found! They will be loaded instead of initializing new ones!");
+                using (var file = File.OpenRead("./Assets/cfg/prefs.frot"))
+                {
+                    Globals.userPreferences = Serializer.Deserialize<Preferences>(file);
+                }
+            }
+            else
+            {
+                AppLogger.LogDebug("This appears to be a first run, so a new preferences instance has been created!");
+
+                // Create new preferences
+                Globals.userPreferences = new Preferences();
+                Globals.userPreferences.preferredImagePack = ImagePack.Vanilla;
+                Globals.userPreferences.enableMusic = true;
+                Globals.userPreferences.enableSfx = true;
+                Globals.userPreferences.enableSexToys = true;
+                Globals.userPreferences.globalVolume = 0.5f;
+            }
+
+            // Init sex toy server
+            if (Globals.userPreferences.enableSexToys)
+            {
+                MasterSextoyServer sextoyServer = new MasterSextoyServer();
+                Globals.sextoyServer = sextoyServer;
+            }
+        }
+
+        /// <summary>
+        /// Update button click handler.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            UpdateGame();
         }
 
         private void startButton_Click(object sender, EventArgs e)

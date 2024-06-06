@@ -14,7 +14,7 @@ namespace SimpleHtmlViewer.Internal
 
         public static void InitializeLogger()
         {
-            if (!Globals.DebugMode)
+            if (Globals.DebugMode)
             {
                 logsink = new LoggerConfiguration().MinimumLevel.Debug().WriteTo.File("./logs/log-.txt", rollingInterval: RollingInterval.Day).CreateLogger();
             }
