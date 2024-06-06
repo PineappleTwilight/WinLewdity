@@ -10,7 +10,19 @@ namespace SimpleHtmlViewer.Internal
 {
     public static class AppLogger
     {
-        private static Logger logsink = new LoggerConfiguration().MinimumLevel.Debug().WriteTo.File("./logs/log-.txt", rollingInterval: RollingInterval.Day).CreateLogger();
+        private static Logger logsink { get; set; }
+
+        public static void InitializeLogger()
+        {
+            if (!Globals.DebugMode)
+            {
+                logsink = new LoggerConfiguration().MinimumLevel.Debug().WriteTo.File("./logs/log-.txt", rollingInterval: RollingInterval.Day).CreateLogger();
+            }
+            else
+            {
+                logsink = new LoggerConfiguration().MinimumLevel.Information().WriteTo.File("./logs/log-.txt", rollingInterval: RollingInterval.Day).CreateLogger();
+            }
+        }
 
         public static void LogDebug(string message, string title = null)
         {

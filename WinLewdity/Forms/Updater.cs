@@ -88,6 +88,24 @@ namespace SimpleHtmlViewer
 
         private void Updater_Load(object sender, EventArgs e)
         {
+            // Check if we are debugging
+            if (File.Exists("./.debug"))
+            {
+                Globals.DebugMode = true;
+            }
+
+            // Init logging service
+            AppLogger.InitializeLogger();
+
+            if (!Globals.DebugMode)
+            {
+                this.Text = Globals.AppName + " Updater v" + Globals.AppVersion;
+            }
+            else
+            {
+                this.Text = Globals.AppName + " Updater v" + Globals.AppVersion + "-dev";
+            }
+
             if (!Directory.Exists("./game"))
             {
                 Directory.CreateDirectory("./game");

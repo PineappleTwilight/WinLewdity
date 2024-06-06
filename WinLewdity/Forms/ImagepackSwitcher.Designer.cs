@@ -64,7 +64,7 @@
             // imagepackPreviewPicBox
             // 
             imagepackPreviewPicBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            imagepackPreviewPicBox.Image = Properties.Resources.vanilla_preview;
+            imagepackPreviewPicBox.Image = WinLewdity_GUI.Properties.Resources.vanilla_preview;
             imagepackPreviewPicBox.Location = new Point(247, 12);
             imagepackPreviewPicBox.Name = "imagepackPreviewPicBox";
             imagepackPreviewPicBox.Size = new Size(308, 258);

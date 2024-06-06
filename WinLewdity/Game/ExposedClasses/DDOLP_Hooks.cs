@@ -1,7 +1,7 @@
 ﻿using NAudio.Wave;
 using SimpleHtmlViewer.Events;
 using SimpleHtmlViewer.Internal;
-using SimpleHtmlViewer.Properties;
+using WinLewdity_GUI.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -14,6 +14,13 @@ namespace SimpleHtmlViewer.Internal
 {
     public static class Globals
     {
+        // App
+        public static readonly string AppName = "WinLewdity";
+
+        public static readonly string AppVersion = "0.1.0";
+
+        public static bool DebugMode = false;
+
         // Preferences
         public static Preferences? userPreferences { get; set; }
 

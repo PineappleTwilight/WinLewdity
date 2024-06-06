@@ -2,7 +2,7 @@
 using SimpleHtmlViewer.Events;
 using SimpleHtmlViewer.Game;
 using SimpleHtmlViewer.Internal;
-using SimpleHtmlViewer.Properties;
+using WinLewdity_GUI.Properties;
 using System.Drawing;
 using WebBrowserExtensions = CefSharp.WebBrowserExtensions;
 
