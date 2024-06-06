@@ -244,7 +244,7 @@
             Controls.Add(imagepackPreviewPicBox);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ImagepackSwitcher";
-            Text = "DDOLP Image Pack Changer - Frot Edition";
+            Text = "Image Pack Changer - Frot Edition";
             Load += ImagepackSwitcher_Load;
             ((System.ComponentModel.ISupportInitialize)imagepackPreviewPicBox).EndInit();
             imagepackLayoutPanel.ResumeLayout(false);

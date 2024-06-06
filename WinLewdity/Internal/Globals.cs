@@ -38,7 +38,7 @@ namespace WinLewdity.Internal
         public static AudioFileReader musicAudioFile;
 
         // Game Stuff
-        public static DDOLP_Hooks gameApi = new DDOLP_Hooks();
+        public static WinLewdity_Hooks gameApi = new WinLewdity_Hooks();
 
         public static DevToolsClient gameDevClient { get; set; }
     }

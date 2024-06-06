@@ -10,7 +10,10 @@ using System.Threading.Tasks;
 
 namespace WinLewdity.Game.ExposedClasses
 {
-    public class DDOLP_Hooks
+    /// <summary>
+    /// Primary class exported to the JS DOM as an API that developers may use.
+    /// </summary>
+    public class WinLewdity_Hooks
     {
         /// <summary>
         /// Plays a bloop sound effect

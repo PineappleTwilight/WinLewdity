@@ -228,6 +228,8 @@ namespace WinLewdity.Forms
 
         private void ImagepackSwitcher_Load(object sender, EventArgs e)
         {
+            this.Text = Globals.AppName + " " + this.Text;
+
             switch (Globals.userPreferences.preferredImagePack)
             {
                 case ImagePack.Vanilla:

@@ -92,12 +92,12 @@ namespace WinLewdity
             gameBrowser.JavascriptObjectRepository.ResolveObject += (sender, e) =>
             {
                 var repo = e.ObjectRepository;
-                if (e.ObjectName == "ddolp")
+                if (e.ObjectName == Globals.AppName.ToLower())
                 {
                     BindingOptions bindingOptions = null; //Binding options is an optional param, defaults to null
                     bindingOptions = BindingOptions.DefaultBinder; //Use the default binder to serialize values into complex objects
                     repo.NameConverter = new CamelCaseJavascriptNameConverter(); // Convert method names to camelCase
-                    repo.Register("ddolp", new DDOLP_Hooks(), options: bindingOptions);
+                    repo.Register(Globals.AppName.ToLower(), new WinLewdity_Hooks(), options: bindingOptions);
                 }
             };
 
@@ -162,6 +162,12 @@ namespace WinLewdity
         /// <param name="e"></param>
         private async void Main_Load(object sender, EventArgs e)
         {
+            // Enable debug mode title
+            if (Globals.DebugMode)
+            {
+                this.Text = this.Text + " (Debug Mode)";
+            }
+
             // Load preferences to log file
             AppLogger.LogDebug("Current Preferences:");
             AppLogger.LogDebug("Current Image Pack: " + Globals.userPreferences.preferredImagePack.ToString());
@@ -274,7 +280,7 @@ namespace WinLewdity
                 }
 
                 // Inject JS binder
-                JavascriptUtils.ExecuteJavascriptAsync($"await CefSharp.BindObjectAsync(\"ddolp\");");
+                JavascriptUtils.ExecuteJavascriptAsync($"await CefSharp.BindObjectAsync(\"{Globals.AppName.ToLower()}\");");
 
                 // Create devtools
                 JavascriptUtils.DevTools = gameBrowser.GetDevToolsClient();
@@ -290,7 +296,7 @@ namespace WinLewdity
                     // Hook click event for any elements. e.target is the element in question.
                     document.addEventListener('click', function(e) {
                         //alert(e.target.tagName)
-                        ddolp.doBloop()
+                        winlewdity.doBloop()
                     }, false);
 	            ");
             }
