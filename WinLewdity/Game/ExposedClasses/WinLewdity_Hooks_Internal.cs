@@ -21,7 +21,14 @@ namespace WinLewdity_GUI.Game.ExposedClasses
             AppLogger.LogDebug($"Element \"{tagName}\" clicked with classes \"{classList}\"");
             if (tagName == "DIV")
             {
-                if (classList.Contains("div-link") || classList.Contains("clothing-body") || classList.Contains("clothing-integrity") || classList.Contains("clothing-reveal") || classList.Contains("clothing-warmth") || classList.Contains("clothing-traits") || classList.Contains("clothing-icon"))
+                // Linkified divs
+                if (classList.Contains("div-link"))
+                {
+                    Globals.gameApi.DoBloop();
+                }
+
+                // Clothing shop div stuff
+                if (classList.Contains("clothing-body") || classList.Contains("clothing-integrity") || classList.Contains("clothing-reveal") || classList.Contains("clothing-warmth") || classList.Contains("clothing-traits") || classList.Contains("clothing-icon"))
                 {
                     Globals.gameApi.DoBloop();
                 }

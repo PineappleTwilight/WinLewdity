@@ -2,24 +2,29 @@
 
 // Click event
 document.addEventListener('click', function (e) {
-    var el = e.target
+    var element = e.target
 
-    if (el.tagName == 'A') {
-        winlewdity_internal.elementClicked(el.tagName, Array.from(el.classList).toString());
+    // Anchor tag parents are not needed
+    if (element.tagName == 'A') {
+        winlewdity_internal.elementClicked(element.tagName, Array.from(element.classList).toString());
         return;
     }
 
-    if (el.tagName == 'BUTTON') {
-        winlewdity_internal.elementClicked(el.tagName, Array.from(el.classList).toString());
+    // Button tag parents are not needed
+    if (element.tagName == 'BUTTON') {
+        winlewdity_internal.elementClicked(element.tagName, Array.from(element.classList).toString());
         return;
     }
 
-    while (el && el.tagName !== 'DIV') {
-        if (el.parentNode == null) {
+    // Check if an element in the hierarchy is a div
+    while (element && element.tagName !== 'DIV') {
+        if (element.parentNode == null) {
             break;
+        } else {
+            element = element.parentNode
         }
-        el = el.parentNode
     }
 
-    winlewdity_internal.elementClicked(el.tagName, Array.from(el.classList).toString());
+    // Call click on the hierarchal div element
+    winlewdity_internal.elementClicked(element.tagName, Array.from(element.classList).toString());
 }, false);
