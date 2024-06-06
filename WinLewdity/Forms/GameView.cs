@@ -17,6 +17,7 @@ using System.Windows.Media;
 using static System.Windows.Forms.LinkLabel;
 using Console = System.Console;
 using File = System.IO.File;
+using WinLewdity_GUI.Game.ExposedClasses;
 
 namespace WinLewdity
 {
@@ -82,6 +83,7 @@ namespace WinLewdity
             parentUpdateForm = parentUpdater;
             InitializeComponent();
 
+            // Init cefsharp settings
             CefSettings cefSettingsBase = new CefSettings();
             Cef.Initialize(cefSettingsBase);
 
@@ -92,12 +94,22 @@ namespace WinLewdity
             gameBrowser.JavascriptObjectRepository.ResolveObject += (sender, e) =>
             {
                 var repo = e.ObjectRepository;
+                if (repo.NameConverter == null)
+                {
+                    CamelCaseJavascriptNameConverter camelConvert = new CamelCaseJavascriptNameConverter();
+                    repo.NameConverter = camelConvert; // Convert method names to camelCase
+                }
+
                 if (e.ObjectName == Globals.AppName.ToLower())
                 {
-                    BindingOptions bindingOptions = null; //Binding options is an optional param, defaults to null
-                    bindingOptions = BindingOptions.DefaultBinder; //Use the default binder to serialize values into complex objects
-                    repo.NameConverter = new CamelCaseJavascriptNameConverter(); // Convert method names to camelCase
+                    BindingOptions bindingOptions = BindingOptions.DefaultBinder; //Use the default binder to serialize values into complex objects
                     repo.Register(Globals.AppName.ToLower(), new WinLewdity_Hooks(), options: bindingOptions);
+                }
+
+                if (e.ObjectName == Globals.AppName.ToLower() + "_internal")
+                {
+                    BindingOptions bindingOptions = BindingOptions.DefaultBinder; //Use the default binder to serialize values into complex objects
+                    repo.Register(Globals.AppName.ToLower() + "_internal", new WinLewdity_Hooks_Internal(), options: bindingOptions);
                 }
             };
 
@@ -281,6 +293,7 @@ namespace WinLewdity
 
                 // Inject JS binder
                 JavascriptUtils.ExecuteJavascriptAsync($"await CefSharp.BindObjectAsync(\"{Globals.AppName.ToLower()}\");");
+                JavascriptUtils.ExecuteJavascriptAsync($"await CefSharp.BindObjectAsync(\"{Globals.AppName.ToLower() + "_internal"}\");");
 
                 // Create devtools
                 JavascriptUtils.DevTools = gameBrowser.GetDevToolsClient();
@@ -289,16 +302,12 @@ namespace WinLewdity
                 JavascriptUtils.DevTools.DOM.ChildNodeInserted += DOM_ChildNodeInserted;
                 JavascriptUtils.DevTools.DOM.DocumentUpdated += DOM_DocumentUpdated;
 
-                //Hook any javascript events here.
-                gameBrowser.ExecuteScriptAsync(@"
-                    // Place JS event hooks below
-
-                    // Hook click event for any elements. e.target is the element in question.
-                    document.addEventListener('click', function(e) {
-                        //alert(e.target.tagName)
-                        winlewdity.doBloop()
-                    }, false);
-	            ");
+                // Load custom JS events
+                if (File.Exists("./Javascript/events.js"))
+                {
+                    string jsCode = File.ReadAllText("./Javascript/events.js");
+                    gameBrowser.ExecuteScriptAsync(jsCode);
+                }
             }
         }
 

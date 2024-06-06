@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation.Metadata;
+using WinLewdity_GUI.Game.ExposedClasses;
 
 namespace WinLewdity.Internal
 {
@@ -39,6 +40,8 @@ namespace WinLewdity.Internal
 
         // Game Stuff
         public static WinLewdity_Hooks gameApi = new WinLewdity_Hooks();
+
+        public static WinLewdity_Hooks_Internal gameApiInternal = new WinLewdity_Hooks_Internal();
 
         public static DevToolsClient gameDevClient { get; set; }
     }

@@ -33,13 +33,5 @@ namespace WinLewdity.Game.ExposedClasses
                 AppLogger.LogDebug("Bloop sfx triggered!");
             }
         }
-
-        /// <summary>
-        /// Triggers a scene change
-        /// </summary>
-        public void TriggerSceneChange()
-        {
-            GameEvents.SceneChanged(this, new StoryProgressedEventArgs());
-        }
     }
 }
