@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleHtmlViewer.Game
+namespace WinLewdity.Game
 {
     public static class GameValues
     {

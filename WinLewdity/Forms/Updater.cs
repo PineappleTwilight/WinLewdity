@@ -1,7 +1,7 @@
 ﻿using LibGit2Sharp;
 using ProtoBuf;
-using SimpleHtmlViewer.Internal;
-using SimpleHtmlViewer.Lovense;
+using WinLewdity.Internal;
+using WinLewdity.Lovense;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SimpleHtmlViewer
+namespace WinLewdity
 {
     public partial class Updater : Form
     {

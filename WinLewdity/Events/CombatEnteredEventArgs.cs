@@ -1,4 +1,4 @@
-﻿using SimpleHtmlViewer.Game;
+﻿using WinLewdity.Game;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,9 +6,9 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization.Metadata;
 using System.Threading.Tasks;
-using static SimpleHtmlViewer.Game.Enums;
+using static WinLewdity.Game.Enums;
 
-namespace SimpleHtmlViewer.Events
+namespace WinLewdity.Events
 {
     public class CombatEnteredEventArgs : EventArgs
     {

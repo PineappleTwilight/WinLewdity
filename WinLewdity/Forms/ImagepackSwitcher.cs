@@ -1,12 +1,12 @@
 ﻿using CefSharp.WinForms;
-using SimpleHtmlViewer.Events;
-using SimpleHtmlViewer.Game;
-using SimpleHtmlViewer.Internal;
+using WinLewdity.Events;
+using WinLewdity.Game;
+using WinLewdity.Internal;
 using WinLewdity_GUI.Properties;
 using System.Drawing;
 using WebBrowserExtensions = CefSharp.WebBrowserExtensions;
 
-namespace SimpleHtmlViewer.Forms
+namespace WinLewdity.Forms
 {
     public partial class ImagepackSwitcher : Form
     {

@@ -1,8 +1,8 @@
 ﻿using Buttplug.Client;
 using Buttplug.Client.Connectors.WebsocketConnector;
-using SimpleHtmlViewer.Internal;
+using WinLewdity.Internal;
 
-namespace SimpleHtmlViewer.Lovense
+namespace WinLewdity.Lovense
 {
     public class MasterSextoyServer
     {

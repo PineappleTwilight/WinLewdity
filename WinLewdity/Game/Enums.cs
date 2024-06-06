@@ -4,9 +4,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static SimpleHtmlViewer.Game.Enums;
+using static WinLewdity.Game.Enums;
 
-namespace SimpleHtmlViewer.Game
+namespace WinLewdity.Game
 {
     public static class EntityTypeExtensions
     {

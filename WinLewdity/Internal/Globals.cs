@@ -1,8 +1,8 @@
 ﻿using CefSharp.DevTools;
 using CefSharp.WinForms;
 using NAudio.Wave;
-using SimpleHtmlViewer.Game.ExposedClasses;
-using SimpleHtmlViewer.Lovense;
+using WinLewdity.Game.ExposedClasses;
+using WinLewdity.Lovense;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation.Metadata;
 
-namespace SimpleHtmlViewer.Internal
+namespace WinLewdity.Internal
 {
     public static class Globals
     {

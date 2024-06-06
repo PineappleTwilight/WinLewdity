@@ -1,5 +1,5 @@
-﻿using SimpleHtmlViewer.Events;
-using SimpleHtmlViewer.Internal;
+﻿using WinLewdity.Events;
+using WinLewdity.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace SimpleHtmlViewer.Game
+namespace WinLewdity.Game
 {
     public static class GameEvents
     {

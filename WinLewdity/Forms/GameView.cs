@@ -6,11 +6,11 @@ using CefSharp.WinForms;
 using DiscordRPC;
 using DiscordRPC.Logging;
 using NAudio.Wave;
-using SimpleHtmlViewer.Events;
-using SimpleHtmlViewer.Forms;
-using SimpleHtmlViewer.Game;
-using SimpleHtmlViewer.Game.ExposedClasses;
-using SimpleHtmlViewer.Internal;
+using WinLewdity.Events;
+using WinLewdity.Forms;
+using WinLewdity.Game;
+using WinLewdity.Game.ExposedClasses;
+using WinLewdity.Internal;
 using System.Media;
 using System.Reflection;
 using System.Windows.Media;
@@ -18,7 +18,7 @@ using static System.Windows.Forms.LinkLabel;
 using Console = System.Console;
 using File = System.IO.File;
 
-namespace SimpleHtmlViewer
+namespace WinLewdity
 {
     public partial class GameView : Form
     {

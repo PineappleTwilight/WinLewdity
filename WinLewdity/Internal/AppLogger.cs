@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleHtmlViewer.Internal
+namespace WinLewdity.Internal
 {
     public static class AppLogger
     {

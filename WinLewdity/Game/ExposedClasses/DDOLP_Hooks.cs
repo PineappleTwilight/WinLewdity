@@ -1,6 +1,6 @@
 ﻿using NAudio.Wave;
-using SimpleHtmlViewer.Events;
-using SimpleHtmlViewer.Internal;
+using WinLewdity.Events;
+using WinLewdity.Internal;
 using WinLewdity_GUI.Properties;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleHtmlViewer.Game.ExposedClasses
+namespace WinLewdity.Game.ExposedClasses
 {
     public class DDOLP_Hooks
     {

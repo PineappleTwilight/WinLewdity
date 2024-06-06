@@ -1,13 +1,13 @@
 ﻿using CefSharp;
 using CefSharp.DevTools;
-using SimpleHtmlViewer.Internal;
+using WinLewdity.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleHtmlViewer.Game
+namespace WinLewdity.Game
 {
     public static class JavascriptUtils
     {

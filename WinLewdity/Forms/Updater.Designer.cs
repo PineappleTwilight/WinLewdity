@@ -1,4 +1,4 @@
-﻿namespace SimpleHtmlViewer
+﻿namespace WinLewdity
 {
     partial class Updater
     {

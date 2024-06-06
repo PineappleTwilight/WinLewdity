@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleHtmlViewer.Events
+namespace WinLewdity.Events
 {
     public class StoryProgressedEventArgs : EventArgs
     {

@@ -5,10 +5,10 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using CefSharp;
-using SimpleHtmlViewer.Internal;
-using static SimpleHtmlViewer.Game.Enums;
+using WinLewdity.Internal;
+using static WinLewdity.Game.Enums;
 
-namespace SimpleHtmlViewer.Game
+namespace WinLewdity.Game
 {
     public static class GameFunctions
     {

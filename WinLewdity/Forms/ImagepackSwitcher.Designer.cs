@@ -1,4 +1,4 @@
-﻿namespace SimpleHtmlViewer.Forms
+﻿namespace WinLewdity.Forms
 {
     partial class ImagepackSwitcher
     {

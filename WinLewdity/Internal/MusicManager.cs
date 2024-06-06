@@ -1,12 +1,12 @@
 ﻿using NAudio.Wave;
-using SimpleHtmlViewer.Game;
+using WinLewdity.Game;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleHtmlViewer.Internal
+namespace WinLewdity.Internal
 {
     public static class MusicManager
     {

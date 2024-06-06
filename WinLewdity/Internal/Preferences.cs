@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ProtoBuf;
 
-namespace SimpleHtmlViewer.Internal
+namespace WinLewdity.Internal
 {
     [ProtoContract]
     public enum ImagePack
