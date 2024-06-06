@@ -27,6 +27,7 @@ namespace SimpleHtmlViewer.Game.ExposedClasses
                 Globals.sfxAudioFile.CurrentTime = TimeSpan.Zero;
                 Globals.sfxOutputDevice.Init(Globals.sfxAudioFile);
                 Globals.sfxOutputDevice.Play();
+                AppLogger.LogDebug("Bloop sfx triggered!");
             }
         }
 
