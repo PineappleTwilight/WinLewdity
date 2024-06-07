@@ -19,6 +19,8 @@ namespace WinLewdity_GUI.Game.ExposedClasses
         public void ElementClicked(string tagName, string classList)
         {
             AppLogger.LogDebug($"Element \"{tagName}\" clicked with classes \"{classList}\"");
+
+            // Divs may or may not change page content, do further scanning with classes & events
             if (tagName == "DIV")
             {
                 // Linkified divs
@@ -34,7 +36,14 @@ namespace WinLewdity_GUI.Game.ExposedClasses
                 }
             }
 
-            if (tagName == "BUTTON" || tagName == "A")
+            // Page content MIGHT not change here, handle accordingly
+            if (tagName == "BUTTON")
+            {
+                Globals.gameApi.DoBloop();
+            }
+
+            // Page content always changes here
+            if (tagName == "A")
             {
                 Globals.gameApi.DoBloop();
             }
@@ -46,6 +55,16 @@ namespace WinLewdity_GUI.Game.ExposedClasses
         public void TriggerSceneChange()
         {
             GameEvents.SceneChanged(this, new StoryProgressedEventArgs());
+        }
+
+        // Triggers a child addition event
+        public void ChildAdded(string elementId, string tagName, string classList)
+        {
+            if (tagName == "DIV" && classList.Contains("passage"))
+            {
+                AppLogger.LogDebug("Scene change was detected! New scene: " + elementId);
+                TriggerSceneChange();
+            }
         }
     }
 }

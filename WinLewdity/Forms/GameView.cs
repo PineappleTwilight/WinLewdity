@@ -256,19 +256,6 @@ namespace WinLewdity
         }
 
         /// <summary>
-        /// Called whenever a node is inserted into the DOM.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private async void DOM_ChildNodeInserted(object? sender, ChildNodeInsertedEventArgs e)
-        {
-            int parentNodeID = e.ParentNodeId;
-            GetAttributesResponse reply = await JavascriptUtils.DevTools.DOM.GetAttributesAsync(parentNodeID);
-            string nodeID = reply.Attributes[reply.Attributes.ToList().FindIndex(x => x == "id") + 1];
-            AppLogger.LogDebug(nodeID);
-        }
-
-        /// <summary>
         /// Called whenever the page begins or stops loading content.
         /// </summary>
         /// <param name="sender"></param>
@@ -299,8 +286,14 @@ namespace WinLewdity
                 JavascriptUtils.DevTools = gameBrowser.GetDevToolsClient();
 
                 // Hook events
-                JavascriptUtils.DevTools.DOM.ChildNodeInserted += DOM_ChildNodeInserted;
                 JavascriptUtils.DevTools.DOM.DocumentUpdated += DOM_DocumentUpdated;
+
+                // Load custom JS functions
+                if (File.Exists("./Javascript/functions.js"))
+                {
+                    string jsCode = File.ReadAllText("./Javascript/functions.js");
+                    gameBrowser.ExecuteScriptAsync(jsCode);
+                }
 
                 // Load custom JS events
                 if (File.Exists("./Javascript/events.js"))
@@ -377,6 +370,25 @@ namespace WinLewdity
                 }
             }
 
+            // Handle combat
+            if (GameValues.InCombat)
+            {
+                if (inCombat == false)
+                {
+                    // User was in combat but has left
+                    GameEvents.CombatStopped(this, new EventArgs());
+                }
+            }
+            else
+            {
+                if (inCombat)
+                {
+                    // User was not in combat but now is
+                    CombatEnteredEventArgs args = new CombatEnteredEventArgs();
+                    args.Consensual = await GameFunctions.IsSceneConsensual();
+                    GameEvents.CombatStarted(this, args);
+                }
+            }
             // Determine player location, i'm not yandere dev I swear, these are valid if statements. THIS SHOULD BE LAST!
         }
 
@@ -393,6 +405,8 @@ namespace WinLewdity
             client.Dispose();
             parentUpdateForm.Close();
         }
+
+        #region UI Controls
 
         private void toggleMusicButton_CheckedChanged(object sender, EventArgs e)
         {
@@ -435,6 +449,8 @@ namespace WinLewdity
             ImagepackSwitcher switcherForm = new ImagepackSwitcher(this);
             switcherForm.Show();
         }
+
+        #endregion UI Controls
     }
 
     public static class GameViewExtensions

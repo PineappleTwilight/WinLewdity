@@ -102,7 +102,7 @@ namespace WinLewdity.Lovense
         }
 
         /// <summary>
-        /// Determines if the specified device supports linear force.
+        /// Determines if the specified device supports linear force. These devices are commonly called "strokers".
         /// </summary>
         /// <param name="device"></param>
         /// <returns></returns>

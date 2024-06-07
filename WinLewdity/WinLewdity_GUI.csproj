@@ -75,6 +75,7 @@
 		<None Remove="Assets\img\previews\vanilla_preview.png" />
 		<None Remove="Assets\music\combat\The Only Thing They Fear Is Baily.wav" />
 		<None Remove="Assets\music\combat_consensual\MEGALOVANIA.wav" />
+		<None Remove="Javascript\functions.js" />
 	</ItemGroup>
 
 	<ItemGroup>

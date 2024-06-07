@@ -11,6 +11,9 @@ namespace WinLewdity.Game
 {
     public static class JavascriptUtils
     {
+        /// <summary>
+        /// Browser developer tools instance.
+        /// </summary>
         public static DevToolsClient? DevTools { get; set; }
 
         /// <summary>
@@ -20,7 +23,7 @@ namespace WinLewdity.Game
         /// <returns></returns>
         public static async Task<JavascriptResponse> FetchJavascriptResult(string script)
         {
-            JavascriptResponse response = await Globals.cefSharpBrowser.EvaluateScriptAsPromiseAsync(script);
+            JavascriptResponse response = await Globals.cefSharpBrowser.GetMainFrame().EvaluateScriptAsync(script);
             return response;
         }
 

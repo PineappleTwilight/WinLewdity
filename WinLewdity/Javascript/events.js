@@ -28,3 +28,14 @@ document.addEventListener('click', function (e) {
     // Call click on the hierarchal div element
     winlewdity_internal.elementClicked(element.tagName, Array.from(element.classList).toString());
 }, false);
+
+// Child added
+waitForElm('#passages').then((elm) => {
+    document.getElementById('passages').addEventListener('DOMNodeInserted', function (event) {
+        if (event.target.classList == null) {
+            winlewdity_internal.childAdded(event.target.id, event.target.tagName, "");
+            return;
+        }
+        winlewdity_internal.childAdded(event.target.id, event.target.tagName, Array.from(event.target.classList).toString());
+    }, false);
+});
