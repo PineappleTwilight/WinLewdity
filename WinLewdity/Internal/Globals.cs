@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation.Metadata;
 using WinLewdity_GUI.Game.ExposedClasses;
+using WinLewdity_GUI.Game.Player;
 
 namespace WinLewdity.Internal
 {
@@ -44,5 +45,6 @@ namespace WinLewdity.Internal
         public static WinLewdity_Hooks_Internal gameApiInternal = new WinLewdity_Hooks_Internal();
 
         public static DevToolsClient gameDevClient { get; set; }
+        public static PlayerCharacter PlayerCharacter { get; set; }
     }
 }

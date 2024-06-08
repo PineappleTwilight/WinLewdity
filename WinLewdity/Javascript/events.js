@@ -3,16 +3,21 @@
 // Click event
 document.addEventListener('click', function (e) {
     var element = e.target
+    var classes = element.classList
+
+    if (classes == null) {
+        classes = ""
+    }
 
     // Anchor tag parents are not needed
     if (element.tagName == 'A') {
-        winlewdity_internal.elementClicked(element.tagName, Array.from(element.classList).toString());
+        winlewdity_internal.elementClicked(element.tagName, Array.from(classes).toString());
         return;
     }
 
     // Button tag parents are not needed
     if (element.tagName == 'BUTTON') {
-        winlewdity_internal.elementClicked(element.tagName, Array.from(element.classList).toString());
+        winlewdity_internal.elementClicked(element.tagName, Array.from(classes).toString());
         return;
     }
 
@@ -26,7 +31,7 @@ document.addEventListener('click', function (e) {
     }
 
     // Call click on the hierarchal div element
-    winlewdity_internal.elementClicked(element.tagName, Array.from(element.classList).toString());
+    winlewdity_internal.elementClicked(element.tagName, Array.from(classes).toString());
 }, false);
 
 // Child added

@@ -361,7 +361,7 @@ namespace WinLewdity.Game
         /// Gets the maximum possible arousal level.
         /// </summary>
         /// <returns></returns>
-        public static int GetMaxAllureLevel()
+        public static double GetMaxAllureLevel()
         {
             return 10000;
         }
@@ -370,10 +370,10 @@ namespace WinLewdity.Game
         /// Gets the current arousal level.
         /// </summary>
         /// <returns></returns>
-        public static async Task<int> GetAllureLevel()
+        public static async Task<double> GetAllureLevel()
         {
             JavascriptResponse con = await JavascriptUtils.FetchJavascriptResult("V.allure");
-            int raw = (int)con.Result;
+            double raw = (double)con.Result;
             return await Task.FromResult(raw);
         }
 
@@ -381,9 +381,9 @@ namespace WinLewdity.Game
         /// Sets the current arousal level.
         /// </summary>
         /// <param name="level"></param>
-        public static async void SetAllureLevel(int level)
+        public static async void SetAllureLevel(double level)
         {
-            int max = GetMaxAllureLevel();
+            double max = GetMaxAllureLevel();
             if (level > max)
             {
                 JavascriptUtils.ExecuteJavascript($"V.allure = {max}");

@@ -301,6 +301,9 @@ namespace WinLewdity
                     string jsCode = File.ReadAllText("./Javascript/events.js");
                     gameBrowser.ExecuteScriptAsync(jsCode);
                 }
+
+                // Init player class
+                Globals.PlayerCharacter = new WinLewdity_GUI.Game.Player.PlayerCharacter();
             }
         }
 
@@ -354,6 +357,14 @@ namespace WinLewdity
         /// <param name="e"></param>
         private async void GameView_StoryProgressed(object sender, StoryProgressedEventArgs e)
         {
+            AppLogger.LogDebug("Current Pain: " + Globals.PlayerCharacter.EmotionalStats.Pain);
+            AppLogger.LogDebug("Current Arousal: " + Globals.PlayerCharacter.EmotionalStats.Arousal);
+            AppLogger.LogDebug("Current Fatigue: " + Globals.PlayerCharacter.EmotionalStats.Fatigue);
+            AppLogger.LogDebug("Current Stress: " + Globals.PlayerCharacter.EmotionalStats.Stress);
+            AppLogger.LogDebug("Current Trauma: " + Globals.PlayerCharacter.EmotionalStats.Trauma);
+            AppLogger.LogDebug("Current Control: " + Globals.PlayerCharacter.EmotionalStats.Control);
+            AppLogger.LogDebug("Current Allure: " + Globals.PlayerCharacter.EmotionalStats.Allure);
+
             // Fetch values for the current scene
             bool inCombat = await GameFunctions.InCombat();
 

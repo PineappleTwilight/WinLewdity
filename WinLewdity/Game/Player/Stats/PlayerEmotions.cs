@@ -12,13 +12,14 @@ namespace WinLewdity_GUI.Game.Player.Stats
         /// <summary>
         /// Player's pain value.
         /// </summary>
-        public float Pain
+        public double Pain
         {
             get
             {
                 var tasky = GameFunctions.GetPainLevel();
+                var tasky2 = GameFunctions.GetMaxPainLevel();
                 tasky.Wait();
-                return (float)(tasky.Result / 100);
+                return tasky.Result / (double)tasky2;
             }
             set
             {
@@ -30,13 +31,15 @@ namespace WinLewdity_GUI.Game.Player.Stats
         /// <summary>
         /// Player's arousal value.
         /// </summary>
-        public float Arousal
+        public double Arousal
         {
             get
             {
                 var tasky = GameFunctions.GetArousalLevel();
+                var tasky2 = GameFunctions.GetMaxArousalLevel();
                 tasky.Wait();
-                return (float)(tasky.Result / 100);
+                tasky2.Wait();
+                return tasky.Result / (double)tasky2.Result;
             }
             set
             {
@@ -48,13 +51,14 @@ namespace WinLewdity_GUI.Game.Player.Stats
         /// <summary>
         /// Player's fatigue value.
         /// </summary>
-        public float Fatigue
+        public double Fatigue
         {
             get
             {
                 var tasky = GameFunctions.GetFatigueLevel();
+                var tasky2 = GameFunctions.GetMaxFatigueLevel();
                 tasky.Wait();
-                return (float)(tasky.Result / 100);
+                return tasky.Result / (double)tasky2;
             }
             set
             {
@@ -66,13 +70,15 @@ namespace WinLewdity_GUI.Game.Player.Stats
         /// <summary>
         /// Player's stress value.
         /// </summary>
-        public float Stress
+        public double Stress
         {
             get
             {
                 var tasky = GameFunctions.GetStressLevel();
+                var tasky2 = GameFunctions.GetMaxStressLevel();
                 tasky.Wait();
-                return (float)(tasky.Result / 100);
+                tasky2.Wait();
+                return tasky.Result / (double)tasky2.Result;
             }
             set
             {
@@ -84,13 +90,15 @@ namespace WinLewdity_GUI.Game.Player.Stats
         /// <summary>
         /// Player's trauma value.
         /// </summary>
-        public float Trauma
+        public double Trauma
         {
             get
             {
                 var tasky = GameFunctions.GetTraumaLevel();
+                var tasky2 = GameFunctions.GetMaxTraumaLevel();
                 tasky.Wait();
-                return (float)(tasky.Result / 100);
+                tasky2.Wait();
+                return tasky.Result / (double)tasky2.Result;
             }
             set
             {
@@ -102,13 +110,15 @@ namespace WinLewdity_GUI.Game.Player.Stats
         /// <summary>
         /// Player's control value.
         /// </summary>
-        public float Control
+        public double Control
         {
             get
             {
                 var tasky = GameFunctions.GetControlLevel();
+                var tasky2 = GameFunctions.GetMaxControlLevel();
                 tasky.Wait();
-                return (float)(tasky.Result / 100);
+                tasky2.Wait();
+                return tasky.Result / (double)tasky2.Result;
             }
             set
             {
@@ -120,13 +130,14 @@ namespace WinLewdity_GUI.Game.Player.Stats
         /// <summary>
         /// Player's allure level.
         /// </summary>
-        public float Allure
+        public double Allure
         {
             get
             {
                 var tasky = GameFunctions.GetAllureLevel();
+                var tasky2 = GameFunctions.GetMaxAllureLevel();
                 tasky.Wait();
-                return (float)(tasky.Result / 100);
+                return tasky.Result / (double)tasky2;
             }
             set
             {
