@@ -1,14 +1,14 @@
 ﻿using NAudio.Wave;
 using WinLewdity.Events;
 using WinLewdity.Internal;
-using WinLewdity_GUI.Properties;
+using WinLewdity.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WinLewdity.Game.ExposedClasses
+namespace WinLewdity.Game.Hooks
 {
     /// <summary>
     /// Primary class exported to the JS DOM as an API that developers may use.

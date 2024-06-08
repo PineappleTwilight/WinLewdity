@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WinLewdity.Game;
 
-namespace WinLewdity_GUI.Game.Player.Stats
+namespace WinLewdity.Game.Player
 {
     public class PlayerEmotions
     {

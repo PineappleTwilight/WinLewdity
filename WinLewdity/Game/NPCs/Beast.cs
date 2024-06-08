@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static WinLewdity.Game.Enums;
 
-namespace WinLewdity.Classes
+namespace WinLewdity.Game.NPCs
 {
     public class Beast
     {

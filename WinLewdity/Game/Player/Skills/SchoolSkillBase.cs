@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WinLewdity_GUI.Game.Player.Skills
+namespace WinLewdity.Game.Player.Bases
 {
     public abstract class SchoolSkillBase : SkillBase
     {

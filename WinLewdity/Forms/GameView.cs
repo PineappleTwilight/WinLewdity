@@ -6,10 +6,8 @@ using CefSharp.WinForms;
 using DiscordRPC;
 using DiscordRPC.Logging;
 using NAudio.Wave;
-using WinLewdity.Events;
 using WinLewdity.Forms;
 using WinLewdity.Game;
-using WinLewdity.Game.ExposedClasses;
 using WinLewdity.Internal;
 using System.Media;
 using System.Reflection;
@@ -17,7 +15,8 @@ using System.Windows.Media;
 using static System.Windows.Forms.LinkLabel;
 using Console = System.Console;
 using File = System.IO.File;
-using WinLewdity_GUI.Game.ExposedClasses;
+using WinLewdity.Events;
+using WinLewdity.Game.Hooks;
 
 namespace WinLewdity
 {
@@ -303,7 +302,7 @@ namespace WinLewdity
                 }
 
                 // Init player class
-                Globals.PlayerCharacter = new WinLewdity_GUI.Game.Player.PlayerCharacter();
+                Globals.PlayerCharacter = new WinLewdity.Game.Player.PlayerCharacter();
             }
         }
 

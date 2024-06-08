@@ -7,7 +7,7 @@ using WinLewdity.Events;
 using WinLewdity.Game;
 using WinLewdity.Internal;
 
-namespace WinLewdity_GUI.Game.ExposedClasses
+namespace WinLewdity.Game.Hooks
 {
     public class WinLewdity_Hooks_Internal
     {

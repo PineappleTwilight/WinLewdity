@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WinLewdity.Game.Player.Bases;
 
-namespace WinLewdity_GUI.Game.Player.Skills.Sex.Subskills
+namespace WinLewdity.Game.Player.Skills
 {
     public class VaginalSkills : SkillBase
     {

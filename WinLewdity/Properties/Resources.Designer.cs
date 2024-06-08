@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WinLewdity_GUI.Properties {
+namespace WinLewdity.Properties {
     using System;
     
     

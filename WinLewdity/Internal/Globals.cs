@@ -1,7 +1,6 @@
 ﻿using CefSharp.DevTools;
 using CefSharp.WinForms;
 using NAudio.Wave;
-using WinLewdity.Game.ExposedClasses;
 using WinLewdity.Lovense;
 using System;
 using System.Collections.Generic;
@@ -9,8 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation.Metadata;
-using WinLewdity_GUI.Game.ExposedClasses;
-using WinLewdity_GUI.Game.Player;
+using WinLewdity.Game.Player;
+using WinLewdity.Game.Hooks;
 
 namespace WinLewdity.Internal
 {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WinLewdity_GUI.Game.Player.Skills.School.Subskills;
+using WinLewdity.Game.Player.Skills;
 
-namespace WinLewdity_GUI.Game.Player.Skills.School
+namespace WinLewdity.Game.Player
 {
     public class PlayerSchoolSkills
     {

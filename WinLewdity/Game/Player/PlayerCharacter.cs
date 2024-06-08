@@ -3,14 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WinLewdity_GUI.Game.Player.Skills.Characteristics;
-using WinLewdity_GUI.Game.Player.Skills.Physical;
-using WinLewdity_GUI.Game.Player.Skills.School;
-using WinLewdity_GUI.Game.Player.Skills.Sex;
-using WinLewdity_GUI.Game.Player.Skills.Weapons;
-using WinLewdity_GUI.Game.Player.Stats;
 
-namespace WinLewdity_GUI.Game.Player
+namespace WinLewdity.Game.Player
 {
     public class PlayerCharacter
     {

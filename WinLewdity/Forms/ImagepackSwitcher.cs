@@ -2,7 +2,7 @@
 using WinLewdity.Events;
 using WinLewdity.Game;
 using WinLewdity.Internal;
-using WinLewdity_GUI.Properties;
+using WinLewdity.Properties;
 using System.Drawing;
 using WebBrowserExtensions = CefSharp.WebBrowserExtensions;
 
