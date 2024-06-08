@@ -41,7 +41,9 @@ namespace WinLewdity.Game.Player
         /// <param name="val"></param>
         private void SetValue(EmotionTraitManager manager, double val)
         {
-            int floatToInt = (int)(val * 100);
+            var maxValTask = manager.GetMaxLevel();
+            maxValTask.Wait();
+            int floatToInt = (int)(val * maxValTask.Result);
             manager.SetLevel(floatToInt);
         }
 
