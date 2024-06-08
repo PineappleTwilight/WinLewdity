@@ -21,7 +21,7 @@ namespace WinLewdity.Game.Player
         public AllureEmotionManager AllureManager { get; private set; } = new AllureEmotionManager();
 
         /// <summary>
-        /// Fetches and formats a value in the range 0.0 - 1.0, with 1.0 representing 100% full and 0.0 representing 0% full.
+        /// Fetches and formats a value in the range 0.0 - 100.0, with 100.0 representing 100% full and 0.0 representing 0% full.
         /// </summary>
         /// <param name="manager"></param>
         /// <returns></returns>
@@ -31,7 +31,8 @@ namespace WinLewdity.Game.Player
             var tasky2 = manager.GetMaxLevel();
             tasky.Wait();
             tasky2.Wait();
-            return (tasky.Result / (double)tasky2.Result);
+            double smallScale = (tasky.Result / (double)tasky2.Result);
+            return smallScale * 100.0;
         }
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace WinLewdity.Game.Player
         {
             var maxValTask = manager.GetMaxLevel();
             maxValTask.Wait();
-            int floatToInt = (int)(val * maxValTask.Result);
+            int floatToInt = (int)((val * 100.0) * maxValTask.Result);
             manager.SetLevel(floatToInt);
         }
 
