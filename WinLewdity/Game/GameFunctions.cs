@@ -101,5 +101,299 @@ namespace WinLewdity.Game
                     break;
             }
         }
+
+        #region Pain Functions
+
+        /// <summary>
+        /// Gets the maximum pain level possible.
+        /// </summary>
+        /// <returns></returns>
+        public static int GetMaxPainLevel()
+        {
+            return 100;
+        }
+
+        /// <summary>
+        /// Gets the current pain level.
+        /// </summary>
+        /// <returns></returns>
+        public static async Task<int> GetPainLevel()
+        {
+            JavascriptResponse con = await JavascriptUtils.FetchJavascriptResult("V.pain");
+            int raw = (int)con.Result;
+            return await Task.FromResult(raw);
+        }
+
+        /// <summary>
+        /// Sets the current pain level.
+        /// </summary>
+        /// <param name="level"></param>
+        public static async void SetPainLevel(int level)
+        {
+            if (level > GetMaxPainLevel())
+            {
+                JavascriptUtils.ExecuteJavascript($"V.pain = {GetMaxPainLevel()}");
+            }
+            else
+            {
+                JavascriptUtils.ExecuteJavascript($"V.pain = {level}");
+            }
+        }
+
+        #endregion Pain Functions
+
+        #region Arousal Functions
+
+        /// <summary>
+        /// Gets the maximum possible arousal level.
+        /// </summary>
+        /// <returns></returns>
+        public static async Task<int> GetMaxArousalLevel()
+        {
+            JavascriptResponse con = await JavascriptUtils.FetchJavascriptResult("V.arousalmax");
+            int raw = (int)con.Result;
+            return await Task.FromResult(raw);
+        }
+
+        /// <summary>
+        /// Gets the current arousal level.
+        /// </summary>
+        /// <returns></returns>
+        public static async Task<int> GetArousalLevel()
+        {
+            JavascriptResponse con = await JavascriptUtils.FetchJavascriptResult("V.arousal");
+            int raw = (int)con.Result;
+            return await Task.FromResult(raw);
+        }
+
+        /// <summary>
+        /// Sets the current arousal level.
+        /// </summary>
+        /// <param name="level"></param>
+        public static async void SetArousalLevel(int level)
+        {
+            int maxArousal = await GetMaxArousalLevel();
+            if (level > maxArousal)
+            {
+                JavascriptUtils.ExecuteJavascript($"V.arousal = {maxArousal}");
+            }
+            else
+            {
+                JavascriptUtils.ExecuteJavascript($"V.arousal = {level}");
+            }
+        }
+
+        #endregion Arousal Functions
+
+        #region Fatigue Functions
+
+        /// <summary>
+        /// Gets the maximum possible arousal level.
+        /// </summary>
+        /// <returns></returns>
+        public static int GetMaxFatigueLevel()
+        {
+            return 2000;
+        }
+
+        /// <summary>
+        /// Gets the current arousal level.
+        /// </summary>
+        /// <returns></returns>
+        public static async Task<int> GetFatigueLevel()
+        {
+            JavascriptResponse con = await JavascriptUtils.FetchJavascriptResult("V.tiredness");
+            int raw = (int)con.Result;
+            return await Task.FromResult(raw);
+        }
+
+        /// <summary>
+        /// Sets the current arousal level.
+        /// </summary>
+        /// <param name="level"></param>
+        public static async void SetFatigueLevel(int level)
+        {
+            int max = GetMaxFatigueLevel();
+            if (level > max)
+            {
+                JavascriptUtils.ExecuteJavascript($"V.tiredness = {max}");
+            }
+            else
+            {
+                JavascriptUtils.ExecuteJavascript($"V.tiredness = {level}");
+            }
+        }
+
+        #endregion Fatigue Functions
+
+        #region Stress Functions
+
+        /// <summary>
+        /// Gets the maximum possible arousal level.
+        /// </summary>
+        /// <returns></returns>
+        public static async Task<int> GetMaxStressLevel()
+        {
+            JavascriptResponse con = await JavascriptUtils.FetchJavascriptResult("V.stressmax");
+            int raw = (int)con.Result;
+            return await Task.FromResult(raw);
+        }
+
+        /// <summary>
+        /// Gets the current arousal level.
+        /// </summary>
+        /// <returns></returns>
+        public static async Task<int> GetStressLevel()
+        {
+            JavascriptResponse con = await JavascriptUtils.FetchJavascriptResult("V.stress");
+            int raw = (int)con.Result;
+            return await Task.FromResult(raw);
+        }
+
+        /// <summary>
+        /// Sets the current arousal level.
+        /// </summary>
+        /// <param name="level"></param>
+        public static async void SetStressLevel(int level)
+        {
+            int max = await GetMaxStressLevel();
+            if (level > max)
+            {
+                JavascriptUtils.ExecuteJavascript($"V.stress = {max}");
+            }
+            else
+            {
+                JavascriptUtils.ExecuteJavascript($"V.stress = {level}");
+            }
+        }
+
+        #endregion Stress Functions
+
+        #region Trauma Functions
+
+        /// <summary>
+        /// Gets the maximum possible arousal level.
+        /// </summary>
+        /// <returns></returns>
+        public static async Task<int> GetMaxTraumaLevel()
+        {
+            JavascriptResponse con = await JavascriptUtils.FetchJavascriptResult("V.traumamax");
+            int raw = (int)con.Result;
+            return await Task.FromResult(raw);
+        }
+
+        /// <summary>
+        /// Gets the current arousal level.
+        /// </summary>
+        /// <returns></returns>
+        public static async Task<int> GetTraumaLevel()
+        {
+            JavascriptResponse con = await JavascriptUtils.FetchJavascriptResult("V.trauma");
+            int raw = (int)con.Result;
+            return await Task.FromResult(raw);
+        }
+
+        /// <summary>
+        /// Sets the current arousal level.
+        /// </summary>
+        /// <param name="level"></param>
+        public static async void SetTraumaLevel(int level)
+        {
+            int max = await GetMaxTraumaLevel();
+            if (level > max)
+            {
+                JavascriptUtils.ExecuteJavascript($"V.trauma = {max}");
+            }
+            else
+            {
+                JavascriptUtils.ExecuteJavascript($"V.trauma = {level}");
+            }
+        }
+
+        #endregion Trauma Functions
+
+        #region Control Functions
+
+        /// <summary>
+        /// Gets the maximum possible arousal level.
+        /// </summary>
+        /// <returns></returns>
+        public static async Task<int> GetMaxControlLevel()
+        {
+            JavascriptResponse con = await JavascriptUtils.FetchJavascriptResult("V.controlmax");
+            int raw = (int)con.Result;
+            return await Task.FromResult(raw);
+        }
+
+        /// <summary>
+        /// Gets the current arousal level.
+        /// </summary>
+        /// <returns></returns>
+        public static async Task<int> GetControlLevel()
+        {
+            JavascriptResponse con = await JavascriptUtils.FetchJavascriptResult("V.control");
+            int raw = (int)con.Result;
+            return await Task.FromResult(raw);
+        }
+
+        /// <summary>
+        /// Sets the current arousal level.
+        /// </summary>
+        /// <param name="level"></param>
+        public static async void SetControlLevel(int level)
+        {
+            int max = await GetMaxControlLevel();
+            if (level > max)
+            {
+                JavascriptUtils.ExecuteJavascript($"V.control = {max}");
+            }
+            else
+            {
+                JavascriptUtils.ExecuteJavascript($"V.control = {level}");
+            }
+        }
+
+        #endregion Control Functions
+
+        #region Allure Functions
+
+        /// <summary>
+        /// Gets the maximum possible arousal level.
+        /// </summary>
+        /// <returns></returns>
+        public static int GetMaxAllureLevel()
+        {
+            return 10000;
+        }
+
+        /// <summary>
+        /// Gets the current arousal level.
+        /// </summary>
+        /// <returns></returns>
+        public static async Task<int> GetAllureLevel()
+        {
+            JavascriptResponse con = await JavascriptUtils.FetchJavascriptResult("V.allure");
+            int raw = (int)con.Result;
+            return await Task.FromResult(raw);
+        }
+
+        /// <summary>
+        /// Sets the current arousal level.
+        /// </summary>
+        /// <param name="level"></param>
+        public static async void SetAllureLevel(int level)
+        {
+            int max = GetMaxAllureLevel();
+            if (level > max)
+            {
+                JavascriptUtils.ExecuteJavascript($"V.allure = {max}");
+            }
+            else
+            {
+                JavascriptUtils.ExecuteJavascript($"V.allure = {level}");
+            }
+        }
+
+        #endregion Allure Functions
     }
 }

@@ -8,7 +8,7 @@ namespace WinLewdity_GUI.Game.Player.Skills
 {
     public abstract class SkillBase
     {
-        public int Tier { get; set; }
-        public float Progress { get; set; }
+        public virtual int Tier { get; set; }
+        public virtual float Progress { get; set; }
     }
 }
