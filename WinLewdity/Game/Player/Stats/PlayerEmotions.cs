@@ -1,14 +1,50 @@
-﻿using System;
+﻿using CefSharp.DevTools.CSS;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WinLewdity.Game;
+using WinLewdity_GUI.Game.DOM.Managers.Bases;
+using WinLewdity_GUI.Game.DOM.Managers.Emotions;
 
 namespace WinLewdity.Game.Player
 {
     public class PlayerEmotions
     {
+        public PainEmotionManager PainManager { get; private set; } = new PainEmotionManager();
+        public ArousalEmotionManager ArousalManager { get; private set; } = new ArousalEmotionManager();
+        public FatigueEmotionManager FatigueManager { get; private set; } = new FatigueEmotionManager();
+        public StressEmotionManager StressManager { get; private set; } = new StressEmotionManager();
+        public TraumaEmotionManager TraumaEmotionManager { get; private set; } = new TraumaEmotionManager();
+        public ControlEmotionManager ControlManager { get; private set; } = new ControlEmotionManager();
+        public AllureEmotionManager AllureManager { get; private set; } = new AllureEmotionManager();
+
+        /// <summary>
+        /// Fetches and formats a value in the range 0.0 - 1.0, with 1.0 representing 100% full and 0.0 representing 0% full.
+        /// </summary>
+        /// <param name="manager"></param>
+        /// <returns></returns>
+        private double FetchValue(EmotionTraitManager manager)
+        {
+            var tasky = manager.GetLevel();
+            var tasky2 = manager.GetMaxLevel();
+            tasky.Wait();
+            tasky2.Wait();
+            return (tasky.Result / (double)tasky2.Result);
+        }
+
+        /// <summary>
+        /// Sets a value in a consistent format. Accepts ranges 0.0 - 1.0, with 1.0 representing 100% full and 0.0 representing 0% full.
+        /// </summary>
+        /// <param name="manager"></param>
+        /// <param name="val"></param>
+        private void SetValue(EmotionTraitManager manager, double val)
+        {
+            int floatToInt = (int)(val * 100);
+            manager.SetLevel(floatToInt);
+        }
+
         /// <summary>
         /// Player's pain value.
         /// </summary>
@@ -16,15 +52,11 @@ namespace WinLewdity.Game.Player
         {
             get
             {
-                var tasky = GameFunctions.GetPainLevel();
-                var tasky2 = GameFunctions.GetMaxPainLevel();
-                tasky.Wait();
-                return tasky.Result / (double)tasky2;
+                return FetchValue(PainManager);
             }
             set
             {
-                int floatToInt = (int)(value * 100);
-                GameFunctions.SetPainLevel(floatToInt);
+                SetValue(PainManager, value);
             }
         }
 
@@ -35,16 +67,11 @@ namespace WinLewdity.Game.Player
         {
             get
             {
-                var tasky = GameFunctions.GetArousalLevel();
-                var tasky2 = GameFunctions.GetMaxArousalLevel();
-                tasky.Wait();
-                tasky2.Wait();
-                return tasky.Result / (double)tasky2.Result;
+                return FetchValue(ArousalManager);
             }
             set
             {
-                int floatToInt = (int)(value * 100);
-                GameFunctions.SetArousalLevel(floatToInt);
+                SetValue(ArousalManager, value);
             }
         }
 
@@ -55,15 +82,11 @@ namespace WinLewdity.Game.Player
         {
             get
             {
-                var tasky = GameFunctions.GetFatigueLevel();
-                var tasky2 = GameFunctions.GetMaxFatigueLevel();
-                tasky.Wait();
-                return tasky.Result / (double)tasky2;
+                return FetchValue(FatigueManager);
             }
             set
             {
-                int floatToInt = (int)(value * 100);
-                GameFunctions.SetFatigueLevel(floatToInt);
+                SetValue(FatigueManager, value);
             }
         }
 
@@ -74,16 +97,11 @@ namespace WinLewdity.Game.Player
         {
             get
             {
-                var tasky = GameFunctions.GetStressLevel();
-                var tasky2 = GameFunctions.GetMaxStressLevel();
-                tasky.Wait();
-                tasky2.Wait();
-                return tasky.Result / (double)tasky2.Result;
+                return FetchValue(StressManager);
             }
             set
             {
-                int floatToInt = (int)(value * 100);
-                GameFunctions.SetStressLevel(floatToInt);
+                SetValue(StressManager, value);
             }
         }
 
@@ -94,16 +112,11 @@ namespace WinLewdity.Game.Player
         {
             get
             {
-                var tasky = GameFunctions.GetTraumaLevel();
-                var tasky2 = GameFunctions.GetMaxTraumaLevel();
-                tasky.Wait();
-                tasky2.Wait();
-                return tasky.Result / (double)tasky2.Result;
+                return FetchValue(TraumaEmotionManager);
             }
             set
             {
-                int floatToInt = (int)(value * 100);
-                GameFunctions.SetTraumaLevel(floatToInt);
+                SetValue(TraumaEmotionManager, value);
             }
         }
 
@@ -114,16 +127,11 @@ namespace WinLewdity.Game.Player
         {
             get
             {
-                var tasky = GameFunctions.GetControlLevel();
-                var tasky2 = GameFunctions.GetMaxControlLevel();
-                tasky.Wait();
-                tasky2.Wait();
-                return tasky.Result / (double)tasky2.Result;
+                return FetchValue(ControlManager);
             }
             set
             {
-                int floatToInt = (int)(value * 100);
-                GameFunctions.SetControlLevel(floatToInt);
+                SetValue(ControlManager, value);
             }
         }
 
@@ -134,15 +142,11 @@ namespace WinLewdity.Game.Player
         {
             get
             {
-                var tasky = GameFunctions.GetAllureLevel();
-                var tasky2 = GameFunctions.GetMaxAllureLevel();
-                tasky.Wait();
-                return tasky.Result / (double)tasky2;
+                return FetchValue(AllureManager);
             }
             set
             {
-                int floatToInt = (int)(value * 100);
-                GameFunctions.SetAllureLevel(floatToInt);
+                SetValue(AllureManager, value);
             }
         }
     }

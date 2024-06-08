@@ -81,6 +81,7 @@
 	<ItemGroup>
 		<Folder Include="Assets\cfg\" />
 		<Folder Include="Assets\sfx\" />
+		<Folder Include="NewFolder\" />
 	</ItemGroup>
 
 	<ItemGroup>
