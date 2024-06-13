@@ -27,11 +27,17 @@ namespace WinLewdity_GUI.Game.DOM.Managers.Bases
         /// Gets the current object level.
         /// </summary>
         /// <returns></returns>
-        public virtual async Task<int> GetLevel()
+        public virtual async Task<double> GetLevel()
         {
             JavascriptResponse con = await JavascriptUtils.FetchJavascriptResult(VariableReference);
-            int raw = (int)con.Result;
-            return await Task.FromResult(raw);
+            if (con.Result.GetType() == typeof(int))
+            {
+                int raw = (int)con.Result;
+                return (double)raw;
+            } else
+            {
+                return (double)con.Result;
+            }
         }
 
         /// <summary>

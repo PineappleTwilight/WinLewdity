@@ -17,12 +17,5 @@ namespace WinLewdity_GUI.Game.DOM.Managers.Emotions
         {
             return 10000;
         }
-
-        public override async Task<int> GetLevel()
-        {
-            JavascriptResponse con = await JavascriptUtils.FetchJavascriptResult(VariableReference);
-            double raw = (double)con.Result;
-            return await Task.FromResult((int)raw);
-        }
     }
 }

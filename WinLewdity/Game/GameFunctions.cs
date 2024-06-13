@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using CefSharp;
 using WinLewdity.Internal;
 using static WinLewdity.Game.Enums;
+using static WinLewdity_GUI.Game.Player.PlayerEnums;
 
 namespace WinLewdity.Game
 {
@@ -98,6 +99,34 @@ namespace WinLewdity.Game
                 default:
                     // Return human if unknown
                     return await Task.FromResult(EntityType.Human);
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Fetches the player's body type
+        /// </summary>
+        /// <returns></returns>
+        public static async Task<BodyType> GetBodyTypeAsync()
+        {
+            JavascriptResponse con = await JavascriptUtils.FetchJavascriptResult("V.bodysize");
+            int raw = (int)con.Result;
+            switch (raw)
+            {
+                case 0:
+                    return await Task.FromResult(BodyType.Tiny);
+                    break;
+                case 1:
+                    return await Task.FromResult(BodyType.Small);
+                    break;
+                case 2:
+                    return await Task.FromResult(BodyType.Normal);
+                    break;
+                case 3:
+                    return await Task.FromResult(BodyType.Large);
+                    break;
+                default:
+                    return await Task.FromResult(BodyType.Normal);
                     break;
             }
         }
