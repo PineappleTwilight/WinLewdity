@@ -8,7 +8,8 @@ using WinLewdity.Game;
 
 namespace WinLewdity_GUI.Game.DOM.Managers.Bases
 {
-    public abstract class EmotionTraitManager : ManagerBase
+    public abstract class CharacteristicManager : ManagerBase
     {
+        public virtual int MaxTier { get; set; }
     }
 }

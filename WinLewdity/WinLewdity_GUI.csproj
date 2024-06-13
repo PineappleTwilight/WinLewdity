@@ -61,6 +61,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="NewFolder\**" />
+	  <EmbeddedResource Remove="NewFolder\**" />
+	  <None Remove="NewFolder\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<None Remove="assets\cfg\.placeholder" />
 		<None Remove="Assets\img\previews\bees_hikarifemale_preview.png" />
 		<None Remove="Assets\img\previews\bees_hikarimale_preview.png" />
@@ -81,7 +87,6 @@
 	<ItemGroup>
 		<Folder Include="Assets\cfg\" />
 		<Folder Include="Assets\sfx\" />
-		<Folder Include="NewFolder\" />
 	</ItemGroup>
 
 	<ItemGroup>

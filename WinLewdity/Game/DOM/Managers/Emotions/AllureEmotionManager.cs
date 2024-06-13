@@ -18,10 +18,6 @@ namespace WinLewdity_GUI.Game.DOM.Managers.Emotions
             return 10000;
         }
 
-        /// <summary>
-        /// Gets the current arousal level.
-        /// </summary>
-        /// <returns></returns>
         public override async Task<int> GetLevel()
         {
             JavascriptResponse con = await JavascriptUtils.FetchJavascriptResult(VariableReference);
