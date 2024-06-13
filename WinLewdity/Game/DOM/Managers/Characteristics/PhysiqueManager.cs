@@ -20,7 +20,7 @@ namespace WinLewdity_GUI.Game.DOM.Managers.Characteristics
                 var ppt = this.PointsPerTier;
                 var level = this.GetLevel();
                 level.Wait();
-                return (int)Math.Floor((double)level.Result / (double)ppt + 1);
+                return (int)Math.Floor((double)level.Result / (double)ppt);
             }
         }
         public override async Task<int> GetMaxLevel()

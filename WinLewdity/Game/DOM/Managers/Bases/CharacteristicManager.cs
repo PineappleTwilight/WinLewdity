@@ -23,9 +23,22 @@ namespace WinLewdity_GUI.Game.DOM.Managers.Bases
             get
             {
                 var maxlevel = this.GetMaxLevel();
-                var maxtier = this.MaxTier;
+                var maxtier = this.MaxTier + 1;
                 maxlevel.Wait();
                 return (double)maxlevel.Result / (double)maxtier;
+            }
+        }
+        public virtual double ProgressToNextTier
+        {
+            get
+            {
+                var ppt = this.PointsPerTier;
+                var level = this.GetLevel();
+                var tier = this.Tier;
+                level.Wait();
+                double remainderFromTier = level.Result - (tier * ppt);
+                double percentage = (remainderFromTier / ppt) * 100;
+                return percentage;
             }
         }
         public virtual int Tier { 
@@ -34,7 +47,14 @@ namespace WinLewdity_GUI.Game.DOM.Managers.Bases
                 var ppt = this.PointsPerTier;
                 var level = this.GetLevel();
                 level.Wait();
-                return (int)Math.Floor((double)level.Result / (double)ppt);
+                int tier = (int)Math.Floor((double)level.Result / (double)ppt);
+                if (tier > MaxTier)
+                {
+                    return MaxTier;
+                } else
+                {
+                    return tier;
+                }
             }
         }
     }

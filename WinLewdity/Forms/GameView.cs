@@ -364,14 +364,14 @@ namespace WinLewdity
             AppLogger.LogDebug("Current Control: " + Globals.PlayerCharacter.EmotionalStats.Control + "%");
             AppLogger.LogDebug("Current Allure: " + Globals.PlayerCharacter.EmotionalStats.Allure + "%");
 
-            AppLogger.LogDebug("Current Purity: " + Globals.PlayerCharacter.Characteristics.PurityManager.Tier + "/" + Globals.PlayerCharacter.Characteristics.PurityManager.MaxTier);
-            AppLogger.LogDebug("Current Beauty: " + Globals.PlayerCharacter.Characteristics.BeautyManager.Tier + "/" + Globals.PlayerCharacter.Characteristics.BeautyManager.MaxTier);
-            AppLogger.LogDebug("Current Physique: " + Globals.PlayerCharacter.Characteristics.PhysiqueManager.Tier + "/" + Globals.PlayerCharacter.Characteristics.PhysiqueManager.MaxTier);
-            AppLogger.LogDebug("Current Willpower: " + Globals.PlayerCharacter.Characteristics.WillpowerManager.Tier + "/" + Globals.PlayerCharacter.Characteristics.WillpowerManager.MaxTier);
-            AppLogger.LogDebug("Current Awareness: " + Globals.PlayerCharacter.Characteristics.AwarenessManager.Tier + "/" + Globals.PlayerCharacter.Characteristics.AwarenessManager.MaxTier);
-            AppLogger.LogDebug("Current Promiscity: " + Globals.PlayerCharacter.Characteristics.PromiscityManager.Tier + "/" + Globals.PlayerCharacter.Characteristics.PromiscityManager.MaxTier);
-            AppLogger.LogDebug("Current Exhibitionism: " + Globals.PlayerCharacter.Characteristics.ExhibitionismManager.Tier + "/" + Globals.PlayerCharacter.Characteristics.ExhibitionismManager.MaxTier);
-            AppLogger.LogDebug("Current Deviancy: " + Globals.PlayerCharacter.Characteristics.DeviancyManager.Tier + "/" + Globals.PlayerCharacter.Characteristics.DeviancyManager.MaxTier);
+            AppLogger.LogDebug("Current Purity: " + Globals.PlayerCharacter.Characteristics.PurityManager.Tier + "/" + Globals.PlayerCharacter.Characteristics.PurityManager.MaxTier + $" ({Globals.PlayerCharacter.Characteristics.PurityManager.ProgressToNextTier}% to next)");
+            AppLogger.LogDebug("Current Beauty: " + Globals.PlayerCharacter.Characteristics.BeautyManager.Tier + "/" + Globals.PlayerCharacter.Characteristics.BeautyManager.MaxTier + $" ({Globals.PlayerCharacter.Characteristics.BeautyManager.ProgressToNextTier}% to next)");
+            AppLogger.LogDebug("Current Physique: " + Globals.PlayerCharacter.Characteristics.PhysiqueManager.Tier + "/" + Globals.PlayerCharacter.Characteristics.PhysiqueManager.MaxTier + $" ({Globals.PlayerCharacter.Characteristics.PhysiqueManager.ProgressToNextTier}% to next)");
+            AppLogger.LogDebug("Current Willpower: " + Globals.PlayerCharacter.Characteristics.WillpowerManager.Tier + "/" + Globals.PlayerCharacter.Characteristics.WillpowerManager.MaxTier + $" ({Globals.PlayerCharacter.Characteristics.WillpowerManager.ProgressToNextTier}% to next)");
+            AppLogger.LogDebug("Current Awareness: " + Globals.PlayerCharacter.Characteristics.AwarenessManager.Tier + "/" + Globals.PlayerCharacter.Characteristics.AwarenessManager.MaxTier + $" ({Globals.PlayerCharacter.Characteristics.AwarenessManager.ProgressToNextTier}% to next)");
+            AppLogger.LogDebug("Current Promiscity: " + Globals.PlayerCharacter.Characteristics.PromiscityManager.Tier + "/" + Globals.PlayerCharacter.Characteristics.PromiscityManager.MaxTier + $" ({Globals.PlayerCharacter.Characteristics.PromiscityManager.ProgressToNextTier}% to next)");
+            AppLogger.LogDebug("Current Exhibitionism: " + Globals.PlayerCharacter.Characteristics.ExhibitionismManager.Tier + "/" + Globals.PlayerCharacter.Characteristics.ExhibitionismManager.MaxTier + $" ({Globals.PlayerCharacter.Characteristics.ExhibitionismManager.ProgressToNextTier}% to next)");
+            AppLogger.LogDebug("Current Deviancy: " + Globals.PlayerCharacter.Characteristics.DeviancyManager.Tier + "/" + Globals.PlayerCharacter.Characteristics.DeviancyManager.MaxTier + $" ({Globals.PlayerCharacter.Characteristics.DeviancyManager.ProgressToNextTier}% to next)");
 
             // Fetch values for the current scene
             bool inCombat = await GameFunctions.InCombat();

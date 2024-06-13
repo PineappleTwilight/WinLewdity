@@ -12,14 +12,14 @@ namespace WinLewdity_GUI.Game.DOM.Managers.Characteristics
     public class BeautyManager : CharacteristicManager
     {
         public override int MaxTier { get; set; } = 6;
-        public override double PointsPerTier
+        public override int Tier
         {
             get
             {
-                var maxlevel = this.GetMaxLevel();
-                var maxtier = this.MaxTier;
-                maxlevel.Wait();
-                return (double)maxlevel.Result / (double)maxtier + 1;
+                var ppt = this.PointsPerTier;
+                var level = this.GetLevel();
+                level.Wait();
+                return (int)Math.Floor((double)level.Result / (double)ppt);
             }
         }
         public override string VariableReference { get; set; } = "V.beauty";
