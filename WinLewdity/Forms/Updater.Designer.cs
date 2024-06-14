@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Updater));
             materialCard1 = new ReaLTaiizor.Controls.MaterialCard();
+            prefixImagepackLabel = new ReaLTaiizor.Controls.MaterialLabel();
             imagepackResultLabel = new ReaLTaiizor.Controls.MaterialLabel();
             imagepackUpdaterButton = new ReaLTaiizor.Controls.MaterialButton();
             updateProgressBar = new ReaLTaiizor.Controls.MaterialProgressBar();
@@ -44,6 +45,7 @@
             // materialCard1
             // 
             materialCard1.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard1.Controls.Add(prefixImagepackLabel);
             materialCard1.Controls.Add(imagepackResultLabel);
             materialCard1.Controls.Add(imagepackUpdaterButton);
             materialCard1.Controls.Add(updateProgressBar);
@@ -63,17 +65,30 @@
             materialCard1.Size = new Size(1203, 258);
             materialCard1.TabIndex = 0;
             // 
+            // prefixImagepackLabel
+            // 
+            prefixImagepackLabel.Depth = 0;
+            prefixImagepackLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            prefixImagepackLabel.Location = new Point(560, 152);
+            prefixImagepackLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            prefixImagepackLabel.Name = "prefixImagepackLabel";
+            prefixImagepackLabel.Size = new Size(83, 23);
+            prefixImagepackLabel.TabIndex = 9;
+            prefixImagepackLabel.Text = "Spritepack:";
+            prefixImagepackLabel.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // imagepackResultLabel
             // 
             imagepackResultLabel.Depth = 0;
             imagepackResultLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             imagepackResultLabel.ForeColor = Color.Red;
-            imagepackResultLabel.Location = new Point(183, 120);
+            imagepackResultLabel.HighEmphasis = true;
+            imagepackResultLabel.Location = new Point(437, 175);
             imagepackResultLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             imagepackResultLabel.Name = "imagepackResultLabel";
             imagepackResultLabel.Size = new Size(328, 19);
             imagepackResultLabel.TabIndex = 8;
-            imagepackResultLabel.TextAlign = ContentAlignment.MiddleLeft;
+            imagepackResultLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // imagepackUpdaterButton
             // 
@@ -90,13 +105,14 @@
             imagepackUpdaterButton.Name = "imagepackUpdaterButton";
             imagepackUpdaterButton.NoAccentTextColor = Color.Empty;
             imagepackUpdaterButton.Size = new Size(158, 36);
-            imagepackUpdaterButton.TabIndex = 6;
+            imagepackUpdaterButton.TabIndex = 0;
             imagepackUpdaterButton.TabStop = false;
             imagepackUpdaterButton.Text = "Change Image Pack";
             imagepackUpdaterButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             imagepackUpdaterButton.UseAccentColor = false;
             imagepackUpdaterButton.UseVisualStyleBackColor = true;
             imagepackUpdaterButton.Click += imagepackUpdaterButton_Click;
+            imagepackUpdaterButton.Enter += PreventButtonFocus;
             // 
             // updateProgressBar
             // 
@@ -142,6 +158,7 @@
             logsFolderButton.UseAccentColor = false;
             logsFolderButton.UseVisualStyleBackColor = true;
             logsFolderButton.Click += openLogsButton_Click;
+            logsFolderButton.Enter += PreventButtonFocus;
             // 
             // musicFolderButton
             // 
@@ -165,6 +182,7 @@
             musicFolderButton.UseAccentColor = false;
             musicFolderButton.UseVisualStyleBackColor = true;
             musicFolderButton.Click += musicFolderButton_Click;
+            musicFolderButton.Enter += PreventButtonFocus;
             // 
             // updateButton
             // 
@@ -188,6 +206,7 @@
             updateButton.UseAccentColor = false;
             updateButton.UseVisualStyleBackColor = true;
             updateButton.Click += updateButton_Click;
+            updateButton.Enter += PreventButtonFocus;
             // 
             // startButton
             // 
@@ -211,6 +230,7 @@
             startButton.UseAccentColor = false;
             startButton.UseVisualStyleBackColor = true;
             startButton.Click += startButton_Click;
+            startButton.Enter += PreventButtonFocus;
             // 
             // Updater
             // 
@@ -240,5 +260,6 @@
         private ReaLTaiizor.Controls.MaterialProgressBar updateProgressBar;
         private ReaLTaiizor.Controls.MaterialButton imagepackUpdaterButton;
         private ReaLTaiizor.Controls.MaterialLabel imagepackResultLabel;
+        private ReaLTaiizor.Controls.MaterialLabel prefixImagepackLabel;
     }
 }

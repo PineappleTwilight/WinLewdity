@@ -343,6 +343,13 @@ namespace WinLewdity
             UpdateGame();
         }
 
+        private void DisableArrowKeys(object sender, PreviewKeyDownEventArgs e)
+        {
+            var keys = new[] { Keys.Left, Keys.Right, Keys.Up, Keys.Down };
+            if (keys.Contains(e.KeyData))
+                e.IsInputKey = true;
+        }
+
         /// <summary>
         /// Enters the game
         /// </summary>
@@ -400,6 +407,11 @@ namespace WinLewdity
             switcherForm.ShowDialog();
             string description = Globals.userPreferences.preferredImagePack.AsString(EnumFormat.Description);
             imagepackResultLabel.Text = description;
+        }
+
+        private void PreventButtonFocus(object sender, EventArgs e)
+        {
+            this.ActiveControl = null;
         }
     }
 }
