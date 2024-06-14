@@ -10,9 +10,9 @@ namespace WinLewdity.Forms
 {
     public partial class ImagepackSwitcher : Form
     {
-        private GameView parentForm;
+        private GameView? parentForm { get; set; }
 
-        public ImagepackSwitcher(GameView gameform)
+        public ImagepackSwitcher(GameView? gameform)
         {
             InitializeComponent();
             parentForm = gameform;
@@ -79,7 +79,10 @@ namespace WinLewdity.Forms
                     }
 
                     // Reload webview
-                    Invoke(() => WebBrowserExtensions.Reload(parentForm.gameBrowser));
+                    if (parentForm != null)
+                    {
+                        Invoke(() => WebBrowserExtensions.Reload(parentForm.gameBrowser));
+                    }
                     //MessageBox.Show("Imagepack switch successful! This window will now close, enjoy!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else

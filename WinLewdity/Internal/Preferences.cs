@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,36 +11,47 @@ namespace WinLewdity.Internal
     [ProtoContract]
     public enum ImagePack
     {
+        [Description("Vanilla")]
         [ProtoEnum]
         Vanilla,
 
+        [Description("BEEESSS")]
         [ProtoEnum]
         Bees,
 
+        [Description("BEEESSS Wax")]
         [ProtoEnum]
         BeesWax,
 
+        [Description("BEEESSS + Paril + Hairstyle Extended")]
         [ProtoEnum]
         BeesParilHairExtended,
 
+        [Description("BEEESSS + Okbd")]
         [ProtoEnum]
         BeesOkbd,
 
+        [Description("BEEESSS + Hikari Female")]
         [ProtoEnum]
         BeesHikari_Female,
 
+        [Description("BEEESSS + Hikari Male")]
         [ProtoEnum]
         BeesHikari_Male,
 
+        [Description("Lllysmasc")]
         [ProtoEnum]
         Lllysmasc,
 
+        [Description("Susato")]
         [ProtoEnum]
         Susato,
 
+        [Description("Mizz")]
         [ProtoEnum]
         Mizz,
 
+        [Description("Mellow's Combat Rework")]
         [ProtoEnum]
         MVCR
     }

@@ -14,6 +14,9 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinLewdity.Forms;
+using CefSharp.DevTools.CSS;
+using EnumsNET;
 
 namespace WinLewdity
 {
@@ -85,6 +88,8 @@ namespace WinLewdity
             updateButton.Enabled = false;
             startButton.Enabled = false;
             musicFolderButton.Enabled = false;
+            logsFolderButton.Enabled = false;
+            imagepackUpdaterButton.Enabled = false;
 
             AppLogger.LogDebug("Attempting to update the game...");
 
@@ -105,13 +110,15 @@ namespace WinLewdity
                         if (result.Status == MergeStatus.UpToDate)
                         {
                             AppLogger.LogDebug("No new commits found in the remote repository!");
-                            Invoke(() =>
+                            Invoke((Delegate)(() =>
                             {
                                 MessageBox.Show("Game already up-to-date!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 updateButton.Enabled = true;
                                 startButton.Enabled = true;
                                 musicFolderButton.Enabled = true;
-                            });
+                                logsFolderButton.Enabled = true;
+                                imagepackUpdaterButton.Enabled = true;
+                            }));
                             return;
                         }
                         else
@@ -234,13 +241,15 @@ namespace WinLewdity
                 File.WriteAllText("./game/index.html", compiledHtml.Replace("DoLP version", $"WinLewdity {buildVersionText}"));
 
                 // Clean up
-                Invoke(() =>
+                Invoke((Delegate)(() =>
                 {
                     MessageBox.Show("Update Complete!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     updateButton.Enabled = true;
                     startButton.Enabled = true;
                     musicFolderButton.Enabled = true;
-                });
+                    logsFolderButton.Enabled = true;
+                    imagepackUpdaterButton.Enabled = true;
+                }));
             }).Start();
         }
 
@@ -318,6 +327,10 @@ namespace WinLewdity
                 MasterSextoyServer sextoyServer = new MasterSextoyServer();
                 Globals.sextoyServer = sextoyServer;
             }
+
+            // Populate ImagePack label
+            string description = Globals.userPreferences.preferredImagePack.AsString(EnumFormat.Description);
+            imagepackResultLabel.Text = description;
         }
 
         /// <summary>
@@ -330,6 +343,11 @@ namespace WinLewdity
             UpdateGame();
         }
 
+        /// <summary>
+        /// Enters the game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void startButton_Click(object sender, EventArgs e)
         {
             if (!File.Exists("./game/index.html"))
@@ -342,11 +360,11 @@ namespace WinLewdity
             this.Hide();
         }
 
-        private void emptyInfoLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start(new ProcessStartInfo { FileName = "https://developer.microsoft.com/en-us/microsoft-edge/webview2/?form=MA13LH#download", UseShellExecute = true });
-        }
-
+        /// <summary>
+        /// Form closing event handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Updater_FormClosing(object sender, FormClosingEventArgs e)
         {
             AppLogger.LogDebug("Flushing preferences back to disk...");
@@ -376,9 +394,12 @@ namespace WinLewdity
             Process.Start(startInfo);
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void imagepackUpdaterButton_Click(object sender, EventArgs e)
         {
-            Process.Start(new ProcessStartInfo { FileName = "https://github.com/intiface/intiface-central/releases/latest/", UseShellExecute = true });
+            ImagepackSwitcher switcherForm = new ImagepackSwitcher(null);
+            switcherForm.ShowDialog();
+            string description = Globals.userPreferences.preferredImagePack.AsString(EnumFormat.Description);
+            imagepackResultLabel.Text = description;
         }
     }
 }

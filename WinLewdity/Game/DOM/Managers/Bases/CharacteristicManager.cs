@@ -18,6 +18,10 @@ namespace WinLewdity_GUI.Game.DOM.Managers.Bases
                 level.Wait();
                 return level.Result;
             }
+            set
+            {
+                this.SetLevel(value);
+            }
         }
         public virtual double PointsPerTier { 
             get

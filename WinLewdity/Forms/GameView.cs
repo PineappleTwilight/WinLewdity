@@ -408,7 +408,6 @@ namespace WinLewdity
                     GameEvents.CombatStarted(this, args);
                 }
             }
-            // Determine player location, i'm not yandere dev I swear, these are valid if statements. THIS SHOULD BE LAST!
         }
 
         /// <summary>
