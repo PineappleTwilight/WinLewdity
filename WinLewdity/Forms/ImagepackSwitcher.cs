@@ -5,6 +5,7 @@ using WinLewdity.Internal;
 using WinLewdity.Properties;
 using System.Drawing;
 using WebBrowserExtensions = CefSharp.WebBrowserExtensions;
+using WinLewdity_GUI.Internal.Windows;
 
 namespace WinLewdity.Forms
 {
@@ -34,47 +35,47 @@ namespace WinLewdity.Forms
                     switch (Globals.userPreferences.preferredImagePack)
                     {
                         case ImagePack.Vanilla:
-                            Updater.CopyFilesRecursively("./source/vanillaimg", "./game/img");
+                            WinFunctions.CopyFilesRecursively("./source/vanillaimg", "./game/img");
                             break;
 
                         case ImagePack.Bees:
-                            Updater.CopyFilesRecursively("./source/beeesssimg", "./game/img");
+                            WinFunctions.CopyFilesRecursively("./source/beeesssimg", "./game/img");
                             break;
 
                         case ImagePack.BeesHikari_Female:
-                            Updater.CopyFilesRecursively("./source/beeessshikarifemaleimg", "./game/img");
+                            WinFunctions.CopyFilesRecursively("./source/beeessshikarifemaleimg", "./game/img");
                             break;
 
                         case ImagePack.BeesHikari_Male:
-                            Updater.CopyFilesRecursively("./source/beeessshikarimaleimg", "./game/img");
+                            WinFunctions.CopyFilesRecursively("./source/beeessshikarimaleimg", "./game/img");
                             break;
 
                         case ImagePack.BeesParilHairExtended:
-                            Updater.CopyFilesRecursively("./source/beeesssparilhairstyleextendedimg", "./game/img");
+                            WinFunctions.CopyFilesRecursively("./source/beeesssparilhairstyleextendedimg", "./game/img");
                             break;
 
                         case ImagePack.BeesWax:
-                            Updater.CopyFilesRecursively("./source/beeessswaximg", "./game/img");
+                            WinFunctions.CopyFilesRecursively("./source/beeessswaximg", "./game/img");
                             break;
 
                         case ImagePack.BeesOkbd:
-                            Updater.CopyFilesRecursively("./source/beeesssokbdimg", "./game/img");
+                            WinFunctions.CopyFilesRecursively("./source/beeesssokbdimg", "./game/img");
                             break;
 
                         case ImagePack.Lllysmasc:
-                            Updater.CopyFilesRecursively("./source/lllysmascimg", "./game/img");
+                            WinFunctions.CopyFilesRecursively("./source/lllysmascimg", "./game/img");
                             break;
 
                         case ImagePack.Susato:
-                            Updater.CopyFilesRecursively("./source/susatoimg", "./game/img");
+                            WinFunctions.CopyFilesRecursively("./source/susatoimg", "./game/img");
                             break;
 
                         case ImagePack.Mizz:
-                            Updater.CopyFilesRecursively("./source/mizzimg", "./game/img");
+                            WinFunctions.CopyFilesRecursively("./source/mizzimg", "./game/img");
                             break;
 
                         case ImagePack.MVCR:
-                            Updater.CopyFilesRecursively("./source/mvcrimg", "./game/img");
+                            WinFunctions.CopyFilesRecursively("./source/mvcrimg", "./game/img");
                             break;
                     }
 

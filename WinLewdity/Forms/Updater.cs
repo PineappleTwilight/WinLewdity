@@ -17,6 +17,7 @@ using System.Windows.Forms;
 using WinLewdity.Forms;
 using CefSharp.DevTools.CSS;
 using EnumsNET;
+using WinLewdity_GUI.Internal.Windows;
 
 namespace WinLewdity
 {
@@ -25,60 +26,6 @@ namespace WinLewdity
         public Updater()
         {
             InitializeComponent();
-        }
-
-        /// <summary>
-        /// Executes a Windows command.
-        /// </summary>
-        /// <param name="command"></param>
-        [Obsolete]
-        private static void ExecuteCommand(string command)
-        {
-            int exitCode;
-            ProcessStartInfo processInfo;
-            Process process;
-
-            processInfo = new ProcessStartInfo("cmd.exe", "/c " + command);
-            processInfo.CreateNoWindow = true;
-            processInfo.UseShellExecute = false;
-            // *** Redirect the output ***
-            processInfo.RedirectStandardError = true;
-            processInfo.RedirectStandardOutput = true;
-
-            process = Process.Start(processInfo);
-            process.WaitForExit();
-
-            // *** Read the streams ***
-            // Warning: This approach can lead to deadlocks
-            string output = process.StandardOutput.ReadToEnd();
-            string error = process.StandardError.ReadToEnd();
-
-            exitCode = process.ExitCode;
-
-            AppLogger.LogDebug("output >>" + (String.IsNullOrEmpty(output) ? "(none)" : output));
-            AppLogger.LogDebug("error >>" + (String.IsNullOrEmpty(error) ? "(none)" : error));
-            AppLogger.LogDebug("ExitCode: " + exitCode.ToString());
-            process.Close();
-        }
-
-        /// <summary>
-        /// Copies all files from a source directory to a target directory. Includes descendants.
-        /// </summary>
-        /// <param name="sourcePath"></param>
-        /// <param name="targetPath"></param>
-        public static void CopyFilesRecursively(string sourcePath, string targetPath)
-        {
-            // Create all of the directories
-            foreach (string dirPath in Directory.GetDirectories(sourcePath, "*", SearchOption.AllDirectories))
-            {
-                Directory.CreateDirectory(dirPath.Replace(sourcePath, targetPath));
-            }
-
-            // Copy the files & replace any files with the same name
-            foreach (string newPath in Directory.GetFiles(sourcePath, "*.*", SearchOption.AllDirectories))
-            {
-                File.Copy(newPath, newPath.Replace(sourcePath, targetPath), true);
-            }
         }
 
         /// <summary>
@@ -187,47 +134,47 @@ namespace WinLewdity
                 switch (Globals.userPreferences.preferredImagePack)
                 {
                     case ImagePack.Vanilla:
-                        CopyFilesRecursively("./source/vanillaimg", "./game/img");
+                        WinFunctions.CopyFilesRecursively("./source/vanillaimg", "./game/img");
                         break;
 
                     case ImagePack.Bees:
-                        CopyFilesRecursively("./source/beeesssimg", "./game/img");
+                        WinFunctions.CopyFilesRecursively("./source/beeesssimg", "./game/img");
                         break;
 
                     case ImagePack.BeesHikari_Female:
-                        CopyFilesRecursively("./source/beeessshikarifemaleimg", "./game/img");
+                        WinFunctions.CopyFilesRecursively("./source/beeessshikarifemaleimg", "./game/img");
                         break;
 
                     case ImagePack.BeesHikari_Male:
-                        CopyFilesRecursively("./source/beeessshikarimaleimg", "./game/img");
+                        WinFunctions.CopyFilesRecursively("./source/beeessshikarimaleimg", "./game/img");
                         break;
 
                     case ImagePack.BeesParilHairExtended:
-                        CopyFilesRecursively("./source/beeesssparilhairstyleextendedimg", "./game/img");
+                        WinFunctions.CopyFilesRecursively("./source/beeesssparilhairstyleextendedimg", "./game/img");
                         break;
 
                     case ImagePack.BeesWax:
-                        CopyFilesRecursively("./source/beeessswaximg", "./game/img");
+                        WinFunctions.CopyFilesRecursively("./source/beeessswaximg", "./game/img");
                         break;
 
                     case ImagePack.BeesOkbd:
-                        CopyFilesRecursively("./source/beeesssokbdimg", "./game/img");
+                        WinFunctions.CopyFilesRecursively("./source/beeesssokbdimg", "./game/img");
                         break;
 
                     case ImagePack.Lllysmasc:
-                        CopyFilesRecursively("./source/lllysmascimg", "./game/img");
+                        WinFunctions.CopyFilesRecursively("./source/lllysmascimg", "./game/img");
                         break;
 
                     case ImagePack.Susato:
-                        CopyFilesRecursively("./source/susatoimg", "./game/img");
+                        WinFunctions.CopyFilesRecursively("./source/susatoimg", "./game/img");
                         break;
 
                     case ImagePack.Mizz:
-                        CopyFilesRecursively("./source/mizzimg", "./game/img");
+                        WinFunctions.CopyFilesRecursively("./source/mizzimg", "./game/img");
                         break;
 
                     case ImagePack.MVCR:
-                        Updater.CopyFilesRecursively("./source/mvcrimg", "./game/img");
+                        WinFunctions.CopyFilesRecursively("./source/mvcrimg", "./game/img");
                         break;
                 }
 
