@@ -31,6 +31,7 @@ namespace WinLewdity
         /// Executes a Windows command.
         /// </summary>
         /// <param name="command"></param>
+        [Obsolete]
         private static void ExecuteCommand(string command)
         {
             int exitCode;
@@ -48,15 +49,15 @@ namespace WinLewdity
             process.WaitForExit();
 
             // *** Read the streams ***
-            // Warning: This approach can lead to deadlocks, see Edit #2
+            // Warning: This approach can lead to deadlocks
             string output = process.StandardOutput.ReadToEnd();
             string error = process.StandardError.ReadToEnd();
 
             exitCode = process.ExitCode;
 
-            Console.WriteLine("output>>" + (String.IsNullOrEmpty(output) ? "(none)" : output));
-            Console.WriteLine("error>>" + (String.IsNullOrEmpty(error) ? "(none)" : error));
-            Console.WriteLine("ExitCode: " + exitCode.ToString(), "ExecuteCommand");
+            AppLogger.LogDebug("output >>" + (String.IsNullOrEmpty(output) ? "(none)" : output));
+            AppLogger.LogDebug("error >>" + (String.IsNullOrEmpty(error) ? "(none)" : error));
+            AppLogger.LogDebug("ExitCode: " + exitCode.ToString());
             process.Close();
         }
 
@@ -254,7 +255,7 @@ namespace WinLewdity
         }
 
         /// <summary>
-        /// Form load event.
+        /// Code run when the application is done loading.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -343,6 +344,11 @@ namespace WinLewdity
             UpdateGame();
         }
 
+        /// <summary>
+        /// Disables the arrow keys for input handlers. Pretty much does nothing.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DisableArrowKeys(object sender, PreviewKeyDownEventArgs e)
         {
             var keys = new[] { Keys.Left, Keys.Right, Keys.Up, Keys.Down };
@@ -351,7 +357,7 @@ namespace WinLewdity
         }
 
         /// <summary>
-        /// Enters the game
+        /// Exits this form and initializes the game view.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -368,7 +374,7 @@ namespace WinLewdity
         }
 
         /// <summary>
-        /// Form closing event handler
+        /// Code run when the application is exiting.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -381,6 +387,11 @@ namespace WinLewdity
             }
         }
 
+        /// <summary>
+        /// Opens the music storage folder in windows explorer.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void musicFolderButton_Click(object sender, EventArgs e)
         {
             ProcessStartInfo startInfo = new ProcessStartInfo
@@ -391,6 +402,11 @@ namespace WinLewdity
             Process.Start(startInfo);
         }
 
+        /// <summary>
+        /// Opens the logs folder in windows explorer.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void openLogsButton_Click(object sender, EventArgs e)
         {
             ProcessStartInfo startInfo = new ProcessStartInfo
@@ -401,6 +417,11 @@ namespace WinLewdity
             Process.Start(startInfo);
         }
 
+        /// <summary>
+        /// Handle the opening of the spritepack switcher & wait for exit.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void imagepackUpdaterButton_Click(object sender, EventArgs e)
         {
             ImagepackSwitcher switcherForm = new ImagepackSwitcher(null);
@@ -409,6 +430,11 @@ namespace WinLewdity
             imagepackResultLabel.Text = description;
         }
 
+        /// <summary>
+        /// Disables weird button effects looking off. Also disables accessibility, may want to rework this.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PreventButtonFocus(object sender, EventArgs e)
         {
             this.ActiveControl = null;
