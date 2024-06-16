@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Updater));
             materialCard1 = new ReaLTaiizor.Controls.MaterialCard();
+            materialDrawer1 = new ReaLTaiizor.Controls.MaterialDrawer();
             prefixImagepackLabel = new ReaLTaiizor.Controls.MaterialLabel();
             imagepackResultLabel = new ReaLTaiizor.Controls.MaterialLabel();
             imagepackUpdaterButton = new ReaLTaiizor.Controls.MaterialButton();
@@ -39,12 +40,19 @@
             musicFolderButton = new ReaLTaiizor.Controls.MaterialButton();
             updateButton = new ReaLTaiizor.Controls.MaterialButton();
             startButton = new ReaLTaiizor.Controls.MaterialButton();
+            materialShowTabControl1 = new ReaLTaiizor.Controls.MaterialShowTabControl();
+            tabPage2 = new TabPage();
+            tabPage3 = new TabPage();
+            tabPage1 = new TabPage();
             materialCard1.SuspendLayout();
+            materialShowTabControl1.SuspendLayout();
             SuspendLayout();
             // 
             // materialCard1
             // 
             materialCard1.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard1.Controls.Add(materialShowTabControl1);
+            materialCard1.Controls.Add(materialDrawer1);
             materialCard1.Controls.Add(prefixImagepackLabel);
             materialCard1.Controls.Add(imagepackResultLabel);
             materialCard1.Controls.Add(imagepackUpdaterButton);
@@ -62,14 +70,35 @@
             materialCard1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialCard1.Name = "materialCard1";
             materialCard1.Padding = new Padding(14);
-            materialCard1.Size = new Size(1203, 258);
+            materialCard1.Size = new Size(1203, 379);
             materialCard1.TabIndex = 0;
+            // 
+            // materialDrawer1
+            // 
+            materialDrawer1.AutoHide = false;
+            materialDrawer1.AutoShow = false;
+            materialDrawer1.BackgroundWithAccent = false;
+            materialDrawer1.BaseTabControl = null;
+            materialDrawer1.Depth = 0;
+            materialDrawer1.HighlightWithAccent = true;
+            materialDrawer1.IndicatorWidth = 0;
+            materialDrawer1.IsOpen = false;
+            materialDrawer1.Location = new Point(-250, 12);
+            materialDrawer1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialDrawer1.Name = "materialDrawer1";
+            materialDrawer1.ShowIconsWhenHidden = false;
+            materialDrawer1.ShowTabControl = null;
+            materialDrawer1.Size = new Size(250, 120);
+            materialDrawer1.TabIndex = 10;
+            materialDrawer1.Text = "materialDrawer1";
+            materialDrawer1.UseColors = false;
             // 
             // prefixImagepackLabel
             // 
+            prefixImagepackLabel.Anchor = AnchorStyles.Bottom;
             prefixImagepackLabel.Depth = 0;
             prefixImagepackLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            prefixImagepackLabel.Location = new Point(560, 152);
+            prefixImagepackLabel.Location = new Point(560, 275);
             prefixImagepackLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             prefixImagepackLabel.Name = "prefixImagepackLabel";
             prefixImagepackLabel.Size = new Size(83, 23);
@@ -79,16 +108,18 @@
             // 
             // imagepackResultLabel
             // 
+            imagepackResultLabel.Anchor = AnchorStyles.Bottom;
             imagepackResultLabel.Depth = 0;
             imagepackResultLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             imagepackResultLabel.ForeColor = Color.Red;
             imagepackResultLabel.HighEmphasis = true;
-            imagepackResultLabel.Location = new Point(437, 175);
+            imagepackResultLabel.Location = new Point(437, 298);
             imagepackResultLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             imagepackResultLabel.Name = "imagepackResultLabel";
             imagepackResultLabel.Size = new Size(328, 19);
             imagepackResultLabel.TabIndex = 8;
             imagepackResultLabel.TextAlign = ContentAlignment.MiddleCenter;
+            imagepackResultLabel.Click += imagepackResultLabel_Click;
             // 
             // imagepackUpdaterButton
             // 
@@ -116,8 +147,9 @@
             // 
             // updateProgressBar
             // 
+            updateProgressBar.Anchor = AnchorStyles.Bottom;
             updateProgressBar.Depth = 0;
-            updateProgressBar.Location = new Point(18, 199);
+            updateProgressBar.Location = new Point(18, 320);
             updateProgressBar.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             updateProgressBar.Name = "updateProgressBar";
             updateProgressBar.Size = new Size(1167, 23);
@@ -126,9 +158,10 @@
             // 
             // loggingLabel
             // 
+            loggingLabel.Anchor = AnchorStyles.Bottom;
             loggingLabel.Depth = 0;
             loggingLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            loggingLabel.Location = new Point(18, 225);
+            loggingLabel.Location = new Point(18, 346);
             loggingLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             loggingLabel.Name = "loggingLabel";
             loggingLabel.Size = new Size(1167, 23);
@@ -232,12 +265,54 @@
             startButton.Click += startButton_Click;
             startButton.Enter += PreventButtonFocus;
             // 
+            // materialShowTabControl1
+            // 
+            materialShowTabControl1.Controls.Add(tabPage2);
+            materialShowTabControl1.Controls.Add(tabPage3);
+            materialShowTabControl1.Controls.Add(tabPage1);
+            materialShowTabControl1.Depth = 0;
+            materialShowTabControl1.Location = new Point(183, 15);
+            materialShowTabControl1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialShowTabControl1.Multiline = true;
+            materialShowTabControl1.Name = "materialShowTabControl1";
+            materialShowTabControl1.SelectedIndex = 0;
+            materialShowTabControl1.Size = new Size(837, 257);
+            materialShowTabControl1.TabIndex = 11;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(829, 229);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "FAQs";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            tabPage3.Location = new Point(4, 24);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Size = new Size(829, 106);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "Socials";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Size = new Size(829, 106);
+            tabPage1.TabIndex = 3;
+            tabPage1.Text = "Donate";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
             // Updater
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1203, 258);
+            ClientSize = new Size(1203, 379);
             Controls.Add(materialCard1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Updater";
@@ -246,6 +321,7 @@
             FormClosing += Updater_FormClosing;
             Load += Updater_Load;
             materialCard1.ResumeLayout(false);
+            materialShowTabControl1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -261,5 +337,10 @@
         private ReaLTaiizor.Controls.MaterialButton imagepackUpdaterButton;
         private ReaLTaiizor.Controls.MaterialLabel imagepackResultLabel;
         private ReaLTaiizor.Controls.MaterialLabel prefixImagepackLabel;
+        private ReaLTaiizor.Controls.MaterialDrawer materialDrawer1;
+        private ReaLTaiizor.Controls.MaterialShowTabControl materialShowTabControl1;
+        private TabPage tabPage2;
+        private TabPage tabPage3;
+        private TabPage tabPage1;
     }
 }

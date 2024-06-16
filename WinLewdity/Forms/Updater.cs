@@ -398,5 +398,10 @@ namespace WinLewdity
         {
             this.ActiveControl = null;
         }
+
+        private void imagepackResultLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

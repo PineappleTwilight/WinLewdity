@@ -8,6 +8,9 @@ using WinLewdity.Internal;
 
 namespace WinLewdity_GUI.Internal.Windows
 {
+    /// <summary>
+    /// Static class used to interact with the underlying Windows OS.
+    /// </summary>
     public static class WinFunctions
     {
         /// <summary>
@@ -15,8 +18,10 @@ namespace WinLewdity_GUI.Internal.Windows
         /// </summary>
         /// <param name="command"></param>
         [Obsolete]
-        private static void ExecuteCommand(string command)
+        public static void ExecuteCommand(string command)
         {
+            AppLogger.LogInfo("Executing command \"" + command + "\"");
+
             int exitCode;
             ProcessStartInfo processInfo;
             Process process;
