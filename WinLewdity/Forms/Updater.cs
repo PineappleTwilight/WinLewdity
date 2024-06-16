@@ -29,15 +29,35 @@ namespace WinLewdity
         }
 
         /// <summary>
-        /// Attempts to update the game dynamically.
+        /// Disables UI buttons.
         /// </summary>
-        public void UpdateGame()
+        private void DisableButtons()
         {
             updateButton.Enabled = false;
             startButton.Enabled = false;
             musicFolderButton.Enabled = false;
             logsFolderButton.Enabled = false;
             imagepackUpdaterButton.Enabled = false;
+        }
+
+        /// <summary>
+        /// Enables UI buttons.
+        /// </summary>
+        private void EnableButtons()
+        {
+            updateButton.Enabled = true;
+            startButton.Enabled = true;
+            musicFolderButton.Enabled = true;
+            logsFolderButton.Enabled = true;
+            imagepackUpdaterButton.Enabled = true;
+        }
+
+        /// <summary>
+        /// Attempts to update the game dynamically.
+        /// </summary>
+        public void UpdateGame()
+        {
+            DisableButtons();
 
             AppLogger.LogDebug("Attempting to update the game...");
 
@@ -61,11 +81,7 @@ namespace WinLewdity
                             Invoke((Delegate)(() =>
                             {
                                 MessageBox.Show("Game already up-to-date!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                updateButton.Enabled = true;
-                                startButton.Enabled = true;
-                                musicFolderButton.Enabled = true;
-                                logsFolderButton.Enabled = true;
-                                imagepackUpdaterButton.Enabled = true;
+                                EnableButtons();
                             }));
                             return;
                         }
@@ -192,11 +208,7 @@ namespace WinLewdity
                 Invoke((Delegate)(() =>
                 {
                     MessageBox.Show("Update Complete!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    updateButton.Enabled = true;
-                    startButton.Enabled = true;
-                    musicFolderButton.Enabled = true;
-                    logsFolderButton.Enabled = true;
-                    imagepackUpdaterButton.Enabled = true;
+                    EnableButtons();
                 }));
             }).Start();
         }
