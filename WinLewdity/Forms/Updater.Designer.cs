@@ -47,6 +47,8 @@
             discordLinkLabel = new ReaLTaiizor.Controls.LinkLabelEdit();
             materialLabel10 = new ReaLTaiizor.Controls.MaterialLabel();
             githubLinkLabel = new ReaLTaiizor.Controls.LinkLabelEdit();
+            materialLabel11 = new ReaLTaiizor.Controls.MaterialLabel();
+            trelloLinkLabel = new ReaLTaiizor.Controls.LinkLabelEdit();
             tabPage1 = new TabPage();
             materialDrawer1 = new ReaLTaiizor.Controls.MaterialDrawer();
             prefixImagepackLabel = new ReaLTaiizor.Controls.MaterialLabel();
@@ -58,8 +60,6 @@
             musicFolderButton = new ReaLTaiizor.Controls.MaterialButton();
             updateButton = new ReaLTaiizor.Controls.MaterialButton();
             startButton = new ReaLTaiizor.Controls.MaterialButton();
-            materialLabel11 = new ReaLTaiizor.Controls.MaterialLabel();
-            trelloLinkLabel = new ReaLTaiizor.Controls.LinkLabelEdit();
             materialCard1.SuspendLayout();
             materialShowTabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -368,6 +368,41 @@
             githubLinkLabel.VisitedLinkColor = Color.FromArgb(32, 34, 37);
             githubLinkLabel.LinkClicked += linkLabelEdit1_LinkClicked;
             // 
+            // materialLabel11
+            // 
+            materialLabel11.Anchor = AnchorStyles.None;
+            materialLabel11.AutoSize = true;
+            materialLabel11.Depth = 0;
+            materialLabel11.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel11.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
+            materialLabel11.HighEmphasis = true;
+            materialLabel11.Location = new Point(188, 194);
+            materialLabel11.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel11.Name = "materialLabel11";
+            materialLabel11.Size = new Size(39, 17);
+            materialLabel11.TabIndex = 5;
+            materialLabel11.Text = "Trello";
+            materialLabel11.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // trelloLinkLabel
+            // 
+            trelloLinkLabel.ActiveLinkColor = Color.FromArgb(153, 34, 34);
+            trelloLinkLabel.Anchor = AnchorStyles.None;
+            trelloLinkLabel.AutoSize = true;
+            trelloLinkLabel.BackColor = Color.Transparent;
+            trelloLinkLabel.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            trelloLinkLabel.LinkBehavior = LinkBehavior.AlwaysUnderline;
+            trelloLinkLabel.LinkColor = Color.FromArgb(32, 34, 37);
+            trelloLinkLabel.Location = new Point(592, 195);
+            trelloLinkLabel.Name = "trelloLinkLabel";
+            trelloLinkLabel.Size = new Size(58, 16);
+            trelloLinkLabel.TabIndex = 6;
+            trelloLinkLabel.TabStop = true;
+            trelloLinkLabel.Text = "Click Me";
+            trelloLinkLabel.TextAlign = ContentAlignment.MiddleCenter;
+            trelloLinkLabel.VisitedLinkColor = Color.FromArgb(32, 34, 37);
+            trelloLinkLabel.LinkClicked += trelloLinkLabel_LinkClicked;
+            // 
             // tabPage1
             // 
             tabPage1.Location = new Point(4, 24);
@@ -568,41 +603,6 @@
             startButton.UseVisualStyleBackColor = true;
             startButton.Click += startButton_Click;
             startButton.Enter += PreventButtonFocus;
-            // 
-            // materialLabel11
-            // 
-            materialLabel11.Anchor = AnchorStyles.None;
-            materialLabel11.AutoSize = true;
-            materialLabel11.Depth = 0;
-            materialLabel11.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            materialLabel11.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            materialLabel11.HighEmphasis = true;
-            materialLabel11.Location = new Point(188, 194);
-            materialLabel11.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialLabel11.Name = "materialLabel11";
-            materialLabel11.Size = new Size(39, 17);
-            materialLabel11.TabIndex = 5;
-            materialLabel11.Text = "Trello";
-            materialLabel11.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // trelloLinkLabel
-            // 
-            trelloLinkLabel.ActiveLinkColor = Color.FromArgb(153, 34, 34);
-            trelloLinkLabel.Anchor = AnchorStyles.None;
-            trelloLinkLabel.AutoSize = true;
-            trelloLinkLabel.BackColor = Color.Transparent;
-            trelloLinkLabel.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            trelloLinkLabel.LinkBehavior = LinkBehavior.AlwaysUnderline;
-            trelloLinkLabel.LinkColor = Color.FromArgb(32, 34, 37);
-            trelloLinkLabel.Location = new Point(592, 195);
-            trelloLinkLabel.Name = "trelloLinkLabel";
-            trelloLinkLabel.Size = new Size(58, 16);
-            trelloLinkLabel.TabIndex = 6;
-            trelloLinkLabel.TabStop = true;
-            trelloLinkLabel.Text = "Click Me";
-            trelloLinkLabel.TextAlign = ContentAlignment.MiddleCenter;
-            trelloLinkLabel.VisitedLinkColor = Color.FromArgb(32, 34, 37);
-            trelloLinkLabel.LinkClicked += trelloLinkLabel_LinkClicked;
             // 
             // Updater
             // 
