@@ -18,6 +18,7 @@ using WinLewdity.Forms;
 using CefSharp.DevTools.CSS;
 using EnumsNET;
 using WinLewdity_GUI.Internal.Windows;
+using ABI.System;
 
 namespace WinLewdity
 {
@@ -401,7 +402,21 @@ namespace WinLewdity
 
         private void imagepackResultLabel_Click(object sender, EventArgs e)
         {
+        }
 
+        private void discordLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            WinFunctions.OpenLinkInBrowser(Globals.DiscordInvite);
+        }
+
+        private void linkLabelEdit1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            WinFunctions.OpenLinkInBrowser(Globals.GithubLink);
+        }
+
+        private void trelloLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            WinFunctions.OpenLinkInBrowser(Globals.TrelloLink);
         }
     }
 }

@@ -21,6 +21,9 @@ namespace WinLewdity.Internal
         public static readonly string AppVersion = "0.1.0";
 
         public static bool DebugMode = false;
+        public static string DiscordInvite = "https://discord.gg/GX7sjmdRMQ";
+        public static string GithubLink = "https://github.com/PineappleTwilight/WinLewdity";
+        public static string TrelloLink = "https://trello.com/b/JJSrt8zW/winlewdity";
 
         // Preferences
         public static Preferences? userPreferences { get; set; }

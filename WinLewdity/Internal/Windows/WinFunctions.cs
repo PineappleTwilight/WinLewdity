@@ -14,6 +14,15 @@ namespace WinLewdity_GUI.Internal.Windows
     public static class WinFunctions
     {
         /// <summary>
+        /// Opens a URL in the user's default browser.
+        /// </summary>
+        /// <param name="url"></param>
+        public static void OpenLinkInBrowser(string url)
+        {
+            Process.Start("explorer", url);
+        }
+
+        /// <summary>
         /// Executes a Windows command.
         /// </summary>
         /// <param name="command"></param>
