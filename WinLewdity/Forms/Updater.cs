@@ -19,14 +19,39 @@ using CefSharp.DevTools.CSS;
 using EnumsNET;
 using WinLewdity_GUI.Internal.Windows;
 using ABI.System;
+using ReaLTaiizor.Forms;
+using ReaLTaiizor.Manager;
+using ReaLTaiizor.Colors;
 
 namespace WinLewdity
 {
-    public partial class Updater : Form
+    public partial class Updater : MaterialForm
     {
+        private readonly MaterialSkinManager materialSkinManager;
+
         public Updater()
         {
             InitializeComponent();
+
+            // Initialize MaterialSkinManager
+            materialSkinManager = MaterialSkinManager.Instance;
+
+            // Set this to false to disable backcolor enforcing on non-materialSkin components
+            // This HAS to be set before the AddFormToManage()
+            materialSkinManager.EnforceBackcolorOnAllComponents = true;
+
+            // MaterialSkinManager properties
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+
+            // Init colorscheme
+
+            //materialSkinManager.ColorScheme = new MaterialColorScheme(0x00C926b3, 0xA1008B, 0xDC2EFF, 0x006E70FF, MaterialTextShade.LIGHT);
+            //materialSkinManager.ColorScheme = new MaterialColorScheme("#00480157", "#370142", "DC2EFF", "00BB5FCF", MaterialTextShade.LIGHT);
+            //materialSkinManager.ColorScheme = new MaterialColorScheme(Color.Orange, Color.DarkOrange, Color.Orchid, Color.OrangeRed, Color.MediumOrchid);
+            // https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors
+            MaterialColorScheme materialColorScheme = new(MaterialPrimary.Indigo700, MaterialPrimary.Indigo800, MaterialPrimary.Indigo600, MaterialAccent.Indigo100, ReaLTaiizor.Util.MaterialTextShade.WHITESMOKE);
+            materialSkinManager.ColorScheme = materialColorScheme;
         }
 
         /// <summary>

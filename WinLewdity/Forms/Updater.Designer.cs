@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Updater));
-            materialCard1 = new ReaLTaiizor.Controls.MaterialCard();
+            updaterMaterialCard = new ReaLTaiizor.Controls.MaterialCard();
             materialShowTabControl1 = new ReaLTaiizor.Controls.MaterialShowTabControl();
             tabPage2 = new TabPage();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -60,7 +60,7 @@
             musicFolderButton = new ReaLTaiizor.Controls.MaterialButton();
             updateButton = new ReaLTaiizor.Controls.MaterialButton();
             startButton = new ReaLTaiizor.Controls.MaterialButton();
-            materialCard1.SuspendLayout();
+            updaterMaterialCard.SuspendLayout();
             materialShowTabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -68,30 +68,30 @@
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
-            // materialCard1
+            // updaterMaterialCard
             // 
-            materialCard1.BackColor = Color.FromArgb(255, 255, 255);
-            materialCard1.Controls.Add(materialShowTabControl1);
-            materialCard1.Controls.Add(materialDrawer1);
-            materialCard1.Controls.Add(prefixImagepackLabel);
-            materialCard1.Controls.Add(imagepackResultLabel);
-            materialCard1.Controls.Add(imagepackUpdaterButton);
-            materialCard1.Controls.Add(updateProgressBar);
-            materialCard1.Controls.Add(loggingLabel);
-            materialCard1.Controls.Add(logsFolderButton);
-            materialCard1.Controls.Add(musicFolderButton);
-            materialCard1.Controls.Add(updateButton);
-            materialCard1.Controls.Add(startButton);
-            materialCard1.Depth = 0;
-            materialCard1.Dock = DockStyle.Fill;
-            materialCard1.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard1.Location = new Point(0, 0);
-            materialCard1.Margin = new Padding(14);
-            materialCard1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialCard1.Name = "materialCard1";
-            materialCard1.Padding = new Padding(14);
-            materialCard1.Size = new Size(1203, 477);
-            materialCard1.TabIndex = 0;
+            updaterMaterialCard.BackColor = Color.FromArgb(255, 255, 255);
+            updaterMaterialCard.Controls.Add(materialShowTabControl1);
+            updaterMaterialCard.Controls.Add(materialDrawer1);
+            updaterMaterialCard.Controls.Add(prefixImagepackLabel);
+            updaterMaterialCard.Controls.Add(imagepackResultLabel);
+            updaterMaterialCard.Controls.Add(imagepackUpdaterButton);
+            updaterMaterialCard.Controls.Add(updateProgressBar);
+            updaterMaterialCard.Controls.Add(loggingLabel);
+            updaterMaterialCard.Controls.Add(logsFolderButton);
+            updaterMaterialCard.Controls.Add(musicFolderButton);
+            updaterMaterialCard.Controls.Add(updateButton);
+            updaterMaterialCard.Controls.Add(startButton);
+            updaterMaterialCard.Depth = 0;
+            updaterMaterialCard.Dock = DockStyle.Fill;
+            updaterMaterialCard.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            updaterMaterialCard.Location = new Point(3, 64);
+            updaterMaterialCard.Margin = new Padding(14);
+            updaterMaterialCard.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            updaterMaterialCard.Name = "updaterMaterialCard";
+            updaterMaterialCard.Padding = new Padding(14);
+            updaterMaterialCard.Size = new Size(1197, 477);
+            updaterMaterialCard.TabIndex = 0;
             // 
             // materialShowTabControl1
             // 
@@ -159,6 +159,7 @@
             materialLabel1.TabIndex = 0;
             materialLabel1.Text = "I want Lovense support!";
             materialLabel1.TextAlign = ContentAlignment.MiddleCenter;
+            materialLabel1.UseAccent = true;
             // 
             // materialLabel2
             // 
@@ -189,6 +190,7 @@
             materialLabel3.TabIndex = 2;
             materialLabel3.Text = "How do I modify SFX/Music?";
             materialLabel3.TextAlign = ContentAlignment.MiddleCenter;
+            materialLabel3.UseAccent = true;
             // 
             // materialLabel4
             // 
@@ -219,6 +221,7 @@
             materialLabel5.TabIndex = 4;
             materialLabel5.Text = "I like your project! Can I fork it?";
             materialLabel5.TextAlign = ContentAlignment.MiddleCenter;
+            materialLabel5.UseAccent = true;
             // 
             // materialLabel6
             // 
@@ -263,6 +266,7 @@
             materialLabel7.TabIndex = 6;
             materialLabel7.Text = "Can I load custom/modded spritepacks?";
             materialLabel7.TextAlign = ContentAlignment.MiddleCenter;
+            materialLabel7.UseAccent = true;
             // 
             // tabPage3
             // 
@@ -313,6 +317,7 @@
             materialLabel9.TabIndex = 1;
             materialLabel9.Text = "Discord";
             materialLabel9.TextAlign = ContentAlignment.MiddleCenter;
+            materialLabel9.UseAccent = true;
             // 
             // discordLinkLabel
             // 
@@ -348,6 +353,7 @@
             materialLabel10.TabIndex = 3;
             materialLabel10.Text = "Github";
             materialLabel10.TextAlign = ContentAlignment.MiddleCenter;
+            materialLabel10.UseAccent = true;
             // 
             // githubLinkLabel
             // 
@@ -383,6 +389,7 @@
             materialLabel11.TabIndex = 5;
             materialLabel11.Text = "Trello";
             materialLabel11.TextAlign = ContentAlignment.MiddleCenter;
+            materialLabel11.UseAccent = true;
             // 
             // trelloLinkLabel
             // 
@@ -437,7 +444,7 @@
             prefixImagepackLabel.Anchor = AnchorStyles.Bottom;
             prefixImagepackLabel.Depth = 0;
             prefixImagepackLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            prefixImagepackLabel.Location = new Point(560, 373);
+            prefixImagepackLabel.Location = new Point(557, 373);
             prefixImagepackLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             prefixImagepackLabel.Name = "prefixImagepackLabel";
             prefixImagepackLabel.Size = new Size(83, 23);
@@ -452,12 +459,13 @@
             imagepackResultLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             imagepackResultLabel.ForeColor = Color.Red;
             imagepackResultLabel.HighEmphasis = true;
-            imagepackResultLabel.Location = new Point(437, 396);
+            imagepackResultLabel.Location = new Point(434, 396);
             imagepackResultLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             imagepackResultLabel.Name = "imagepackResultLabel";
             imagepackResultLabel.Size = new Size(328, 19);
             imagepackResultLabel.TabIndex = 8;
             imagepackResultLabel.TextAlign = ContentAlignment.MiddleCenter;
+            imagepackResultLabel.UseAccent = true;
             imagepackResultLabel.Click += imagepackResultLabel_Click;
             // 
             // imagepackUpdaterButton
@@ -488,7 +496,7 @@
             // 
             updateProgressBar.Anchor = AnchorStyles.Bottom;
             updateProgressBar.Depth = 0;
-            updateProgressBar.Location = new Point(18, 418);
+            updateProgressBar.Location = new Point(15, 418);
             updateProgressBar.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             updateProgressBar.Name = "updateProgressBar";
             updateProgressBar.Size = new Size(1167, 23);
@@ -500,7 +508,7 @@
             loggingLabel.Anchor = AnchorStyles.Bottom;
             loggingLabel.Depth = 0;
             loggingLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            loggingLabel.Location = new Point(18, 444);
+            loggingLabel.Location = new Point(15, 444);
             loggingLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             loggingLabel.Name = "loggingLabel";
             loggingLabel.Size = new Size(1167, 23);
@@ -609,15 +617,15 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(1203, 477);
-            Controls.Add(materialCard1);
+            ClientSize = new Size(1203, 544);
+            Controls.Add(updaterMaterialCard);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Updater";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Updater";
             FormClosing += Updater_FormClosing;
             Load += Updater_Load;
-            materialCard1.ResumeLayout(false);
+            updaterMaterialCard.ResumeLayout(false);
             materialShowTabControl1.ResumeLayout(false);
             tabPage2.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
@@ -630,7 +638,7 @@
 
         #endregion
 
-        private ReaLTaiizor.Controls.MaterialCard materialCard1;
+        private ReaLTaiizor.Controls.MaterialCard updaterMaterialCard;
         private ReaLTaiizor.Controls.MaterialButton logsFolderButton;
         private ReaLTaiizor.Controls.MaterialButton musicFolderButton;
         private ReaLTaiizor.Controls.MaterialButton updateButton;

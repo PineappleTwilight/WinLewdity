@@ -18,7 +18,7 @@ namespace WinLewdity.Internal
         // App
         public static readonly string AppName = "WinLewdity";
 
-        public static readonly string AppVersion = "0.1.0";
+        public static readonly string AppVersion = "0.2.0";
 
         public static bool DebugMode = false;
         public static string DiscordInvite = "https://discord.gg/GX7sjmdRMQ";

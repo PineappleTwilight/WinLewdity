@@ -117,12 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="materialLabel4.Text" xml:space="preserve">
-    <value>Open the music and sfx folders, and simply drop the new files you wish to use inside them. The SFX folder requires the filenames to be IDENTICAL to the existing assets, but the music files can be named whatever you wish.</value>
-  </data>
-  <data name="materialLabel6.Text" xml:space="preserve">
-    <value>No. Submit a PR and I will review it as soon as I can. I cannot stop you from doing as such, but keep in mind this code is copywritten and any forks/reuploads that do not fall under fair use will be removed.</value>
-  </data>
   <metadata name="prefixImagepackLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -135,6 +129,12 @@
   <metadata name="loggingLabel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="materialLabel4.Text" xml:space="preserve">
+    <value>Open the music and sfx folders, and simply drop the new files you wish to use inside them. The SFX folder requires the filenames to be IDENTICAL to the existing assets, but the music files can be named whatever you wish.</value>
+  </data>
+  <data name="materialLabel6.Text" xml:space="preserve">
+    <value>No. Submit a PR and I will review it as soon as I can. I cannot stop you from doing as such, but keep in mind this code is copywritten and any forks/reuploads that do not fall under fair use will be removed.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
