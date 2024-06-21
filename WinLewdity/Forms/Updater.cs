@@ -45,12 +45,16 @@ namespace WinLewdity
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
 
             // Init colorscheme
+            Color richPurpleBase = (Color)new ColorConverter().ConvertFromString("#792187"); // 33% opacity
+            Color richPurpleDark = (Color)new ColorConverter().ConvertFromString("#5c1967"); // 2 Steps Down From Base
+            Color richPurpleLight = (Color)new ColorConverter().ConvertFromString("#9428a4"); // 2 Steps Up From Base
+            Color richPurpleAccent = (Color)new ColorConverter().ConvertFromString("#c75bd7"); // 60% opacity
 
             //materialSkinManager.ColorScheme = new MaterialColorScheme(0x00C926b3, 0xA1008B, 0xDC2EFF, 0x006E70FF, MaterialTextShade.LIGHT);
             //materialSkinManager.ColorScheme = new MaterialColorScheme("#00480157", "#370142", "DC2EFF", "00BB5FCF", MaterialTextShade.LIGHT);
             //materialSkinManager.ColorScheme = new MaterialColorScheme(Color.Orange, Color.DarkOrange, Color.Orchid, Color.OrangeRed, Color.MediumOrchid);
             // https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors
-            MaterialColorScheme materialColorScheme = new(MaterialPrimary.Indigo700, MaterialPrimary.Indigo800, MaterialPrimary.Indigo600, MaterialAccent.Indigo100, ReaLTaiizor.Util.MaterialTextShade.WHITESMOKE);
+            MaterialColorScheme materialColorScheme = new(richPurpleBase, richPurpleDark, richPurpleLight, richPurpleAccent, ReaLTaiizor.Util.MaterialTextShade.WHITESMOKE);
             materialSkinManager.ColorScheme = materialColorScheme;
         }
 

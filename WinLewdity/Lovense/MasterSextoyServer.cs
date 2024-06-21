@@ -9,7 +9,7 @@ namespace WinLewdity.Lovense
         /// <summary>
         /// Core buttplug.io API server
         /// </summary>
-        public ButtplugClient Client { get; private set; } = new ButtplugClient("DDOLP Sex Toy Integration");
+        public ButtplugClient Client { get; private set; } = new ButtplugClient(Globals.AppName + " Sex Toy Integration");
 
         /// <summary>
         /// Handles websocket connections
@@ -22,14 +22,14 @@ namespace WinLewdity.Lovense
         /// <param name="port"></param>
         public MasterSextoyServer(string ip = "127.0.0.1", int port = 12345, string suffix = "")
         {
-            AppLogger.LogInfo("DOLP Sex Toy Integration Service v1.0.0");
+            AppLogger.LogInfo(Globals.AppName + " Sex Toy Integration Service v" + Globals.AppVersion);
             try
             {
                 AppLogger.LogInfo($"Attempting to connect to websocket server on {ip}:{port}...");
                 Connector = new ButtplugWebsocketConnector(new Uri($"ws://{ip}:{port}/{suffix}"));
                 var ConnectTask = Client.ConnectAsync(Connector);
                 ConnectTask.Wait();
-                AppLogger.LogInfo("Sex toy master server ready for connections!");
+                AppLogger.LogInfo("Sex toy client connection ready for connections!");
             }
             catch (Exception ex)
             {

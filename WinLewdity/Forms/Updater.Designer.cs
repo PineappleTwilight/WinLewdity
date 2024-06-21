@@ -99,12 +99,12 @@
             materialShowTabControl1.Controls.Add(tabPage3);
             materialShowTabControl1.Controls.Add(tabPage1);
             materialShowTabControl1.Depth = 0;
-            materialShowTabControl1.Location = new Point(183, 15);
+            materialShowTabControl1.Location = new Point(169, 17);
             materialShowTabControl1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialShowTabControl1.Multiline = true;
             materialShowTabControl1.Name = "materialShowTabControl1";
             materialShowTabControl1.SelectedIndex = 0;
-            materialShowTabControl1.Size = new Size(837, 355);
+            materialShowTabControl1.Size = new Size(859, 353);
             materialShowTabControl1.TabIndex = 11;
             // 
             // tabPage2
@@ -113,7 +113,7 @@
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(829, 327);
+            tabPage2.Size = new Size(851, 325);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "FAQs";
             tabPage2.UseVisualStyleBackColor = true;
@@ -141,7 +141,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.Size = new Size(823, 321);
+            tableLayoutPanel1.Size = new Size(845, 319);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // materialLabel1
@@ -152,7 +152,7 @@
             materialLabel1.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel1.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
             materialLabel1.HighEmphasis = true;
-            materialLabel1.Location = new Point(130, 32);
+            materialLabel1.Location = new Point(135, 31);
             materialLabel1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialLabel1.Name = "materialLabel1";
             materialLabel1.Size = new Size(152, 17);
@@ -167,7 +167,7 @@
             materialLabel2.Depth = 0;
             materialLabel2.Font = new Font("Roboto", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             materialLabel2.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.SubtleEmphasis;
-            materialLabel2.Location = new Point(436, 21);
+            materialLabel2.Location = new Point(453, 21);
             materialLabel2.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialLabel2.Name = "materialLabel2";
             materialLabel2.Size = new Size(361, 38);
@@ -183,7 +183,7 @@
             materialLabel3.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel3.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
             materialLabel3.HighEmphasis = true;
-            materialLabel3.Location = new Point(115, 112);
+            materialLabel3.Location = new Point(121, 110);
             materialLabel3.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialLabel3.Name = "materialLabel3";
             materialLabel3.Size = new Size(181, 17);
@@ -198,7 +198,7 @@
             materialLabel4.Depth = 0;
             materialLabel4.Font = new Font("Roboto", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             materialLabel4.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.SubtleEmphasis;
-            materialLabel4.Location = new Point(436, 89);
+            materialLabel4.Location = new Point(453, 88);
             materialLabel4.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialLabel4.Name = "materialLabel4";
             materialLabel4.Size = new Size(361, 62);
@@ -214,7 +214,7 @@
             materialLabel5.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel5.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
             materialLabel5.HighEmphasis = true;
-            materialLabel5.Location = new Point(108, 192);
+            materialLabel5.Location = new Point(113, 189);
             materialLabel5.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialLabel5.Name = "materialLabel5";
             materialLabel5.Size = new Size(196, 17);
@@ -229,7 +229,7 @@
             materialLabel6.Depth = 0;
             materialLabel6.Font = new Font("Roboto", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             materialLabel6.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.SubtleEmphasis;
-            materialLabel6.Location = new Point(436, 169);
+            materialLabel6.Location = new Point(453, 167);
             materialLabel6.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialLabel6.Name = "materialLabel6";
             materialLabel6.Size = new Size(361, 62);
@@ -243,7 +243,7 @@
             materialLabel8.Depth = 0;
             materialLabel8.Font = new Font("Roboto", 12F, FontStyle.Italic, GraphicsUnit.Pixel);
             materialLabel8.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.SubtleEmphasis;
-            materialLabel8.Location = new Point(436, 249);
+            materialLabel8.Location = new Point(453, 247);
             materialLabel8.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialLabel8.Name = "materialLabel8";
             materialLabel8.Size = new Size(361, 62);
@@ -259,7 +259,7 @@
             materialLabel7.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel7.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
             materialLabel7.HighEmphasis = true;
-            materialLabel7.Location = new Point(78, 272);
+            materialLabel7.Location = new Point(83, 269);
             materialLabel7.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialLabel7.Name = "materialLabel7";
             materialLabel7.Size = new Size(256, 17);
@@ -273,7 +273,7 @@
             tabPage3.Controls.Add(tableLayoutPanel2);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(829, 327);
+            tabPage3.Size = new Size(851, 339);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Socials";
             tabPage3.UseVisualStyleBackColor = true;
@@ -299,7 +299,7 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel2.Size = new Size(829, 327);
+            tableLayoutPanel2.Size = new Size(851, 339);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // materialLabel9
@@ -310,7 +310,7 @@
             materialLabel9.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel9.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
             materialLabel9.HighEmphasis = true;
-            materialLabel9.Location = new Point(183, 32);
+            materialLabel9.Location = new Point(188, 34);
             materialLabel9.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialLabel9.Name = "materialLabel9";
             materialLabel9.Size = new Size(49, 17);
@@ -328,7 +328,7 @@
             discordLinkLabel.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             discordLinkLabel.LinkBehavior = LinkBehavior.AlwaysUnderline;
             discordLinkLabel.LinkColor = Color.FromArgb(32, 34, 37);
-            discordLinkLabel.Location = new Point(592, 33);
+            discordLinkLabel.Location = new Point(609, 34);
             discordLinkLabel.Name = "discordLinkLabel";
             discordLinkLabel.Size = new Size(58, 16);
             discordLinkLabel.TabIndex = 2;
@@ -346,7 +346,7 @@
             materialLabel10.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel10.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
             materialLabel10.HighEmphasis = true;
-            materialLabel10.Location = new Point(185, 113);
+            materialLabel10.Location = new Point(191, 118);
             materialLabel10.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialLabel10.Name = "materialLabel10";
             materialLabel10.Size = new Size(44, 17);
@@ -364,7 +364,7 @@
             githubLinkLabel.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             githubLinkLabel.LinkBehavior = LinkBehavior.AlwaysUnderline;
             githubLinkLabel.LinkColor = Color.FromArgb(32, 34, 37);
-            githubLinkLabel.Location = new Point(592, 114);
+            githubLinkLabel.Location = new Point(609, 118);
             githubLinkLabel.Name = "githubLinkLabel";
             githubLinkLabel.Size = new Size(58, 16);
             githubLinkLabel.TabIndex = 4;
@@ -382,7 +382,7 @@
             materialLabel11.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel11.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
             materialLabel11.HighEmphasis = true;
-            materialLabel11.Location = new Point(188, 194);
+            materialLabel11.Location = new Point(193, 202);
             materialLabel11.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialLabel11.Name = "materialLabel11";
             materialLabel11.Size = new Size(39, 17);
@@ -400,7 +400,7 @@
             trelloLinkLabel.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             trelloLinkLabel.LinkBehavior = LinkBehavior.AlwaysUnderline;
             trelloLinkLabel.LinkColor = Color.FromArgb(32, 34, 37);
-            trelloLinkLabel.Location = new Point(592, 195);
+            trelloLinkLabel.Location = new Point(609, 202);
             trelloLinkLabel.Name = "trelloLinkLabel";
             trelloLinkLabel.Size = new Size(58, 16);
             trelloLinkLabel.TabIndex = 6;
@@ -414,7 +414,7 @@
             // 
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
-            tabPage1.Size = new Size(829, 327);
+            tabPage1.Size = new Size(851, 339);
             tabPage1.TabIndex = 3;
             tabPage1.Text = "Donate";
             tabPage1.UseVisualStyleBackColor = true;
@@ -477,7 +477,7 @@
             imagepackUpdaterButton.HighEmphasis = true;
             imagepackUpdaterButton.Icon = null;
             imagepackUpdaterButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            imagepackUpdaterButton.Location = new Point(18, 111);
+            imagepackUpdaterButton.Location = new Point(4, 102);
             imagepackUpdaterButton.Margin = new Padding(4, 6, 4, 6);
             imagepackUpdaterButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             imagepackUpdaterButton.Name = "imagepackUpdaterButton";
@@ -525,7 +525,7 @@
             logsFolderButton.HighEmphasis = true;
             logsFolderButton.Icon = null;
             logsFolderButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            logsFolderButton.Location = new Point(1027, 63);
+            logsFolderButton.Location = new Point(1035, 54);
             logsFolderButton.Margin = new Padding(4, 6, 4, 6);
             logsFolderButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             logsFolderButton.Name = "logsFolderButton";
@@ -549,7 +549,7 @@
             musicFolderButton.HighEmphasis = true;
             musicFolderButton.Icon = null;
             musicFolderButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            musicFolderButton.Location = new Point(1027, 15);
+            musicFolderButton.Location = new Point(1035, 6);
             musicFolderButton.Margin = new Padding(4, 6, 4, 6);
             musicFolderButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             musicFolderButton.Name = "musicFolderButton";
@@ -573,7 +573,7 @@
             updateButton.HighEmphasis = true;
             updateButton.Icon = null;
             updateButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            updateButton.Location = new Point(18, 63);
+            updateButton.Location = new Point(4, 54);
             updateButton.Margin = new Padding(4, 6, 4, 6);
             updateButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             updateButton.Name = "updateButton";
@@ -597,7 +597,7 @@
             startButton.HighEmphasis = true;
             startButton.Icon = null;
             startButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            startButton.Location = new Point(18, 15);
+            startButton.Location = new Point(4, 6);
             startButton.Margin = new Padding(4, 6, 4, 6);
             startButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             startButton.Name = "startButton";
