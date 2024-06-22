@@ -28,6 +28,7 @@ namespace WinLewdity
     public partial class Updater : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
+        private bool UpdatesNeeded = false;
 
         public Updater()
         {
@@ -80,167 +81,6 @@ namespace WinLewdity
             musicFolderButton.Enabled = true;
             logsFolderButton.Enabled = true;
             imagepackUpdaterButton.Enabled = true;
-        }
-
-        /// <summary>
-        /// Attempts to update the game dynamically.
-        /// </summary>
-        public void UpdateGame()
-        {
-            DisableButtons();
-
-            AppLogger.LogDebug("Attempting to update the game...");
-
-            new Thread(() =>
-            {
-                Thread.CurrentThread.IsBackground = true;
-                DateTime date = DateTime.Now;
-                string buildVersionText = $"v{date.Day}.{date.Month}.{date.Year}";
-
-                // Clone repository
-                if (Directory.Exists("./source/.git"))
-                {
-                    AppLogger.LogDebug("Source folder found!");
-                    using (Repository repository = new Repository("./source"))
-                    {
-                        AppLogger.LogDebug("Pulling latest commits from remote repository...");
-                        MergeResult result = Commands.Pull(repository, new Signature(new Identity("John Doe", "anonymous@example.com"), DateTime.Now), new PullOptions());
-                        if (result.Status == MergeStatus.UpToDate)
-                        {
-                            AppLogger.LogDebug("No new commits found in the remote repository!");
-                            Invoke((Delegate)(() =>
-                            {
-                                MessageBox.Show("Game already up-to-date!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                EnableButtons();
-                            }));
-                            return;
-                        }
-                        else
-                        {
-                            AppLogger.LogDebug("Local repository updated to commit: " + result.Commit.Id);
-                        }
-                    }
-                }
-                else
-                {
-                    AppLogger.LogWarning("Source directory not found! Source repository will now be cloned!");
-                    Repository.Clone("https://gitgud.io/Andrest07/degrees-of-lewdity-plus.git", "./source");
-                }
-
-                // Remove old game files
-                if (File.Exists("./game/index.html"))
-                {
-                    File.Delete("./game/index.html");
-                }
-
-                if (Directory.Exists("./game/img"))
-                {
-                    Directory.Delete("./game/img", true);
-                }
-
-                AppLogger.LogDebug("Modifying VERSION file...");
-
-                // Back up version file, I really don't know what this does but we change it anyway
-                File.Copy("./source/version", "./source/version.old");
-
-                // Modify version file
-                string versionText = File.ReadAllText("./source/version");
-
-                File.WriteAllText("./source/version", versionText.Replace("version", buildVersionText));
-
-                AppLogger.LogDebug("Starting game compilation...");
-
-                // Run compile
-                Process p = new Process();
-
-                string batch_file_path = Path.GetFullPath("./source/compile.bat");
-
-                // Scream at the commands to make them obey
-                p.StartInfo.FileName = "cmd"; // <-- EXECUTABLE NAME
-                p.StartInfo.Arguments = "/c \"" + batch_file_path + "\""; // <-- COMMAND TO BE RUN BY CMD '/c', and the content of the command "PATH"
-                p.StartInfo.CreateNoWindow = true; // <-- CREATE NO WINDOW
-                p.StartInfo.UseShellExecute = false; // <-- USE THE C# APPLICATION AS THE SHELL THROUGH WHICH THE PROCESS IS EXECUTED, NOT THE OS ITSELF
-                p.Start(); // <-- START THE APPLICATION
-                p.WaitForExit(); // <-- WAIT FOR APPLICATION TO FINISH
-
-                AppLogger.LogDebug("Moving build artifacts to the game directory...");
-
-                // Move newly generated executable to game folder
-                File.Move("./source/Degrees of Lewdity VERSION.html", "./game/index.html");
-
-                // Ensure graphic mods exist
-                if (!Directory.Exists("./game/img"))
-                {
-                    Directory.CreateDirectory("./game/img");
-                }
-
-                AppLogger.LogDebug("Moving preferred image pack to game directory...");
-
-                // Compile the image packs
-                switch (Globals.userPreferences.preferredImagePack)
-                {
-                    case ImagePack.Vanilla:
-                        WinFunctions.CopyFilesRecursively("./source/vanillaimg", "./game/img");
-                        break;
-
-                    case ImagePack.Bees:
-                        WinFunctions.CopyFilesRecursively("./source/beeesssimg", "./game/img");
-                        break;
-
-                    case ImagePack.BeesHikari_Female:
-                        WinFunctions.CopyFilesRecursively("./source/beeessshikarifemaleimg", "./game/img");
-                        break;
-
-                    case ImagePack.BeesHikari_Male:
-                        WinFunctions.CopyFilesRecursively("./source/beeessshikarimaleimg", "./game/img");
-                        break;
-
-                    case ImagePack.BeesParilHairExtended:
-                        WinFunctions.CopyFilesRecursively("./source/beeesssparilhairstyleextendedimg", "./game/img");
-                        break;
-
-                    case ImagePack.BeesWax:
-                        WinFunctions.CopyFilesRecursively("./source/beeessswaximg", "./game/img");
-                        break;
-
-                    case ImagePack.BeesOkbd:
-                        WinFunctions.CopyFilesRecursively("./source/beeesssokbdimg", "./game/img");
-                        break;
-
-                    case ImagePack.Lllysmasc:
-                        WinFunctions.CopyFilesRecursively("./source/lllysmascimg", "./game/img");
-                        break;
-
-                    case ImagePack.Susato:
-                        WinFunctions.CopyFilesRecursively("./source/susatoimg", "./game/img");
-                        break;
-
-                    case ImagePack.Mizz:
-                        WinFunctions.CopyFilesRecursively("./source/mizzimg", "./game/img");
-                        break;
-
-                    case ImagePack.MVCR:
-                        WinFunctions.CopyFilesRecursively("./source/mvcrimg", "./game/img");
-                        break;
-                }
-
-                AppLogger.LogDebug("Cleaning up...");
-
-                // Replace original version file
-                File.Delete("./source/version");
-                File.Move("./source/version.old", "./source/version");
-
-                // Scan game files and replace DoLP versions
-                string compiledHtml = File.ReadAllText("./game/index.html");
-                File.WriteAllText("./game/index.html", compiledHtml.Replace("DoLP version", $"WinLewdity {buildVersionText}"));
-
-                // Clean up
-                Invoke((Delegate)(() =>
-                {
-                    MessageBox.Show("Update Complete!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    EnableButtons();
-                }));
-            }).Start();
         }
 
         /// <summary>
@@ -330,7 +170,20 @@ namespace WinLewdity
         /// <param name="e"></param>
         private void updateButton_Click(object sender, EventArgs e)
         {
-            UpdateGame();
+            DisableButtons();
+            bool? UpdateNeeded = WinFunctions.IsUpdateAvailable();
+            if (UpdateNeeded == true || UpdateNeeded == null)
+            {
+                AutoResetEvent waitHandle = new AutoResetEvent(false);
+                ThreadPool.QueueUserWorkItem(new WaitCallback(WinFunctions.UpdateGame), waitHandle);
+                waitHandle.WaitOne(); // Wait for our thread to stop executing
+                MessageBox.Show("Updates successfully installed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (UpdateNeeded == false)
+            {
+                MessageBox.Show("Game is already up-to-date!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            EnableButtons();
         }
 
         /// <summary>
