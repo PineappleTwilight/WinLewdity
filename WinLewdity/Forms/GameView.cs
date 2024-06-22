@@ -287,18 +287,18 @@ namespace WinLewdity
                 // Hook events
                 JavascriptUtils.DevTools.DOM.DocumentUpdated += DOM_DocumentUpdated;
 
-                // Load custom JS functions
-                if (File.Exists("./Javascript/functions.js"))
+                // Load custom JS code
+                foreach (string file in Directory.GetFiles("./Javascript"))
                 {
-                    string jsCode = File.ReadAllText("./Javascript/functions.js");
-                    gameBrowser.ExecuteScriptAsync(jsCode);
-                }
-
-                // Load custom JS events
-                if (File.Exists("./Javascript/events.js"))
-                {
-                    string jsCode = File.ReadAllText("./Javascript/events.js");
-                    gameBrowser.ExecuteScriptAsync(jsCode);
+                    if (Path.GetExtension(file) == ".js")
+                    {
+                        string jsCode = File.ReadAllText(file);
+                        gameBrowser.ExecuteScriptAsync(jsCode);
+                    }
+                    else
+                    {
+                        File.Delete(file);
+                    }
                 }
 
                 // Init player class
