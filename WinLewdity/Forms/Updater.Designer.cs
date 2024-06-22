@@ -273,7 +273,7 @@
             tabPage3.Controls.Add(tableLayoutPanel2);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(851, 339);
+            tabPage3.Size = new Size(851, 325);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Socials";
             tabPage3.UseVisualStyleBackColor = true;
@@ -299,7 +299,7 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel2.Size = new Size(851, 339);
+            tableLayoutPanel2.Size = new Size(851, 325);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // materialLabel9
@@ -310,7 +310,7 @@
             materialLabel9.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel9.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
             materialLabel9.HighEmphasis = true;
-            materialLabel9.Location = new Point(188, 34);
+            materialLabel9.Location = new Point(188, 32);
             materialLabel9.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialLabel9.Name = "materialLabel9";
             materialLabel9.Size = new Size(49, 17);
@@ -326,9 +326,10 @@
             discordLinkLabel.AutoSize = true;
             discordLinkLabel.BackColor = Color.Transparent;
             discordLinkLabel.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            discordLinkLabel.ForeColor = Color.Red;
             discordLinkLabel.LinkBehavior = LinkBehavior.AlwaysUnderline;
-            discordLinkLabel.LinkColor = Color.FromArgb(32, 34, 37);
-            discordLinkLabel.Location = new Point(609, 34);
+            discordLinkLabel.LinkColor = Color.FromArgb(199, 91, 215);
+            discordLinkLabel.Location = new Point(609, 33);
             discordLinkLabel.Name = "discordLinkLabel";
             discordLinkLabel.Size = new Size(58, 16);
             discordLinkLabel.TabIndex = 2;
@@ -346,7 +347,7 @@
             materialLabel10.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel10.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
             materialLabel10.HighEmphasis = true;
-            materialLabel10.Location = new Point(191, 118);
+            materialLabel10.Location = new Point(191, 113);
             materialLabel10.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialLabel10.Name = "materialLabel10";
             materialLabel10.Size = new Size(44, 17);
@@ -362,9 +363,10 @@
             githubLinkLabel.AutoSize = true;
             githubLinkLabel.BackColor = Color.Transparent;
             githubLinkLabel.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            githubLinkLabel.ForeColor = Color.Red;
             githubLinkLabel.LinkBehavior = LinkBehavior.AlwaysUnderline;
-            githubLinkLabel.LinkColor = Color.FromArgb(32, 34, 37);
-            githubLinkLabel.Location = new Point(609, 118);
+            githubLinkLabel.LinkColor = Color.FromArgb(199, 91, 215);
+            githubLinkLabel.Location = new Point(609, 114);
             githubLinkLabel.Name = "githubLinkLabel";
             githubLinkLabel.Size = new Size(58, 16);
             githubLinkLabel.TabIndex = 4;
@@ -382,7 +384,7 @@
             materialLabel11.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel11.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
             materialLabel11.HighEmphasis = true;
-            materialLabel11.Location = new Point(193, 202);
+            materialLabel11.Location = new Point(193, 194);
             materialLabel11.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialLabel11.Name = "materialLabel11";
             materialLabel11.Size = new Size(39, 17);
@@ -398,9 +400,10 @@
             trelloLinkLabel.AutoSize = true;
             trelloLinkLabel.BackColor = Color.Transparent;
             trelloLinkLabel.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            trelloLinkLabel.ForeColor = Color.Red;
             trelloLinkLabel.LinkBehavior = LinkBehavior.AlwaysUnderline;
-            trelloLinkLabel.LinkColor = Color.FromArgb(32, 34, 37);
-            trelloLinkLabel.Location = new Point(609, 202);
+            trelloLinkLabel.LinkColor = Color.FromArgb(199, 91, 215);
+            trelloLinkLabel.Location = new Point(609, 195);
             trelloLinkLabel.Name = "trelloLinkLabel";
             trelloLinkLabel.Size = new Size(58, 16);
             trelloLinkLabel.TabIndex = 6;
@@ -414,7 +417,7 @@
             // 
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
-            tabPage1.Size = new Size(851, 339);
+            tabPage1.Size = new Size(851, 325);
             tabPage1.TabIndex = 3;
             tabPage1.Text = "Donate";
             tabPage1.UseVisualStyleBackColor = true;

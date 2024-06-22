@@ -18,17 +18,17 @@ namespace WinLewdity.Internal
         // App
         public static readonly string AppName = "WinLewdity";
 
-        public static readonly string AppVersion = "0.2.0";
+        public static readonly Version AppVersion = new Version("0.2.0");
 
         public static bool DebugMode = false;
-        public static string DiscordInvite = "https://discord.gg/GX7sjmdRMQ";
-        public static string GithubLink = "https://github.com/PineappleTwilight/WinLewdity";
-        public static string TrelloLink = "https://trello.com/b/JJSrt8zW/winlewdity";
+        public static Uri DiscordInvite = new Uri("https://discord.gg/GX7sjmdRMQ");
+        public static Uri GithubLink = new Uri("https://github.com/PineappleTwilight/WinLewdity");
+        public static Uri TrelloLink = new Uri("https://trello.com/b/JJSrt8zW/winlewdity");
 
         // Preferences
         public static Preferences? userPreferences { get; set; }
 
-        public static MasterSextoyServer? sextoyServer { get; set; }
+        public static SextoyServerConnector? sextoyServer { get; set; }
 
         public static ChromiumWebBrowser? cefSharpBrowser { get; set; }
 
@@ -42,9 +42,9 @@ namespace WinLewdity.Internal
         public static AudioFileReader musicAudioFile;
 
         // Game Stuff
-        public static WinLewdity_Hooks gameApi = new WinLewdity_Hooks();
+        public static WinLewdity_Hooks gameApi { get; } = new WinLewdity_Hooks();
 
-        public static WinLewdity_Hooks_Internal gameApiInternal = new WinLewdity_Hooks_Internal();
+        public static WinLewdity_Hooks_Internal gameApiInternal { get; } = new WinLewdity_Hooks_Internal();
 
         public static DevToolsClient gameDevClient { get; set; }
         public static PlayerCharacter PlayerCharacter { get; set; }

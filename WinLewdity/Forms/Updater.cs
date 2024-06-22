@@ -157,7 +157,7 @@ namespace WinLewdity
 
                 // Scream at the commands to make them obey
                 p.StartInfo.FileName = "cmd"; // <-- EXECUTABLE NAME
-                p.StartInfo.Arguments = "/c \"" + batch_file_path + "\""; // <-- COMMAND TO BE RUN BY CMD '/k', and the content of the command "PATH"
+                p.StartInfo.Arguments = "/c \"" + batch_file_path + "\""; // <-- COMMAND TO BE RUN BY CMD '/c', and the content of the command "PATH"
                 p.StartInfo.CreateNoWindow = true; // <-- CREATE NO WINDOW
                 p.StartInfo.UseShellExecute = false; // <-- USE THE C# APPLICATION AS THE SHELL THROUGH WHICH THE PROCESS IS EXECUTED, NOT THE OS ITSELF
                 p.Start(); // <-- START THE APPLICATION
@@ -314,7 +314,7 @@ namespace WinLewdity
             // Init sex toy server
             if (Globals.userPreferences.enableSexToys)
             {
-                MasterSextoyServer sextoyServer = new MasterSextoyServer();
+                SextoyServerConnector sextoyServer = new SextoyServerConnector();
                 Globals.sextoyServer = sextoyServer;
             }
 
@@ -435,17 +435,17 @@ namespace WinLewdity
 
         private void discordLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            WinFunctions.OpenLinkInBrowser(Globals.DiscordInvite);
+            WinFunctions.OpenLinkInBrowser(Globals.DiscordInvite.AbsoluteUri);
         }
 
         private void linkLabelEdit1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            WinFunctions.OpenLinkInBrowser(Globals.GithubLink);
+            WinFunctions.OpenLinkInBrowser(Globals.GithubLink.AbsoluteUri);
         }
 
         private void trelloLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            WinFunctions.OpenLinkInBrowser(Globals.TrelloLink);
+            WinFunctions.OpenLinkInBrowser(Globals.TrelloLink.AbsoluteUri);
         }
     }
 }
