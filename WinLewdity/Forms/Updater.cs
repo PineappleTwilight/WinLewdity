@@ -132,9 +132,9 @@ namespace WinLewdity
             ThreadPool.QueueUserWorkItem(new WaitCallback(delegate
             {
                 // Create source folder
-                if (!Directory.Exists("./cache"))
+                if (!Directory.Exists("./browsercache"))
                 {
-                    Directory.CreateDirectory("./cache");
+                    Directory.CreateDirectory("./browsercache");
                 }
             }));
 
@@ -328,7 +328,10 @@ namespace WinLewdity
 
         private void openCefLogsButton_Click(object sender, EventArgs e)
         {
-            Process.Start("notepad.exe", "./debug.log");
+            ThreadPool.QueueUserWorkItem(new WaitCallback(delegate
+            {
+                WinFunctions.OpenFileInNotepad("./debug.log");
+            }));
         }
     }
 }

@@ -23,6 +23,11 @@ namespace WinLewdity_GUI.Internal.Windows
             Process.Start("explorer", url);
         }
 
+        public static void OpenFileInNotepad(string filepath)
+        {
+            Process.Start("notepad.exe", Path.GetFullPath(filepath));
+        }
+
         /// <summary>
         /// Executes a Windows command.
         /// </summary>
@@ -90,7 +95,7 @@ namespace WinLewdity_GUI.Internal.Windows
                 AppLogger.LogDebug("Source folder found!");
                 using (Repository repository = new Repository("./source"))
                 {
-                    AppLogger.LogDebug("Repository HEAD behind by " + repository.Head.TrackingDetails.BehindBy + " commit(s)");
+                    AppLogger.LogDebug("Repository HEAD behind by " + repository.Head.TrackingDetails.BehindBy + " commit(s).");
                     if (repository.Head.TrackingDetails.BehindBy > 0)
                     {
                         return true;
