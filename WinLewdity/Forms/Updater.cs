@@ -22,6 +22,7 @@ using ABI.System;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
 using ReaLTaiizor.Colors;
+using CefSharp.WinForms;
 
 namespace WinLewdity
 {
@@ -117,11 +118,23 @@ namespace WinLewdity
                 {
                     Directory.CreateDirectory("./game");
                 }
+            }));
 
+            ThreadPool.QueueUserWorkItem(new WaitCallback(delegate
+            {
                 // Create source folder
                 if (!Directory.Exists("./source"))
                 {
                     Directory.CreateDirectory("./source");
+                }
+            }));
+
+            ThreadPool.QueueUserWorkItem(new WaitCallback(delegate
+            {
+                // Create source folder
+                if (!Directory.Exists("./cache"))
+                {
+                    Directory.CreateDirectory("./cache");
                 }
             }));
 
@@ -311,6 +324,11 @@ namespace WinLewdity
         private void trelloLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             WinFunctions.OpenLinkInBrowser(Globals.TrelloLink.AbsoluteUri);
+        }
+
+        private void openCefLogsButton_Click(object sender, EventArgs e)
+        {
+            Process.Start("notepad.exe", "./debug.log");
         }
     }
 }

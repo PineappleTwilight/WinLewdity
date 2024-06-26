@@ -84,6 +84,8 @@ namespace WinLewdity
 
             // Init cefsharp settings
             CefSettings cefSettingsBase = new CefSettings();
+            cefSettingsBase.CachePath = Path.GetFullPath("./cache");
+            cefSettingsBase.PersistUserPreferences = true;
             Cef.Initialize(cefSettingsBase);
 
             // Hook up events

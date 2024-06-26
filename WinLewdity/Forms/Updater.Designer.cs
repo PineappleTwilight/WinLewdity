@@ -60,6 +60,7 @@
             musicFolderButton = new ReaLTaiizor.Controls.MaterialButton();
             updateButton = new ReaLTaiizor.Controls.MaterialButton();
             startButton = new ReaLTaiizor.Controls.MaterialButton();
+            openCefLogsButton = new ReaLTaiizor.Controls.MaterialButton();
             updaterMaterialCard.SuspendLayout();
             materialShowTabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -71,6 +72,7 @@
             // updaterMaterialCard
             // 
             updaterMaterialCard.BackColor = Color.FromArgb(255, 255, 255);
+            updaterMaterialCard.Controls.Add(openCefLogsButton);
             updaterMaterialCard.Controls.Add(materialShowTabControl1);
             updaterMaterialCard.Controls.Add(materialDrawer1);
             updaterMaterialCard.Controls.Add(prefixImagepackLabel);
@@ -615,6 +617,29 @@
             startButton.Click += startButton_Click;
             startButton.Enter += PreventButtonFocus;
             // 
+            // openCefLogsButton
+            // 
+            openCefLogsButton.AutoSize = false;
+            openCefLogsButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            openCefLogsButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            openCefLogsButton.Depth = 0;
+            openCefLogsButton.HighEmphasis = true;
+            openCefLogsButton.Icon = null;
+            openCefLogsButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            openCefLogsButton.Location = new Point(1035, 102);
+            openCefLogsButton.Margin = new Padding(4, 6, 4, 6);
+            openCefLogsButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            openCefLogsButton.Name = "openCefLogsButton";
+            openCefLogsButton.NoAccentTextColor = Color.Empty;
+            openCefLogsButton.Size = new Size(158, 36);
+            openCefLogsButton.TabIndex = 12;
+            openCefLogsButton.TabStop = false;
+            openCefLogsButton.Text = "Open CefSharp Logs";
+            openCefLogsButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            openCefLogsButton.UseAccentColor = false;
+            openCefLogsButton.UseVisualStyleBackColor = true;
+            openCefLogsButton.Click += openCefLogsButton_Click;
+            // 
             // Updater
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -672,5 +697,6 @@
         private ReaLTaiizor.Controls.LinkLabelEdit githubLinkLabel;
         private ReaLTaiizor.Controls.MaterialLabel materialLabel11;
         private ReaLTaiizor.Controls.LinkLabelEdit trelloLinkLabel;
+        private ReaLTaiizor.Controls.MaterialButton openCefLogsButton;
     }
 }
