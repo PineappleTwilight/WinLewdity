@@ -123,6 +123,9 @@ namespace WinLewdity
             // Hook JS events
             gameBrowser.FrameLoadEnd += GameBrowser_FrameLoadEnd;
             gameBrowser.JavascriptMessageReceived += GameBrowser_JavascriptMessageReceived;
+            gameBrowser.LoadError += GameBrowser_LoadError;
+            gameBrowser.StatusMessage += GameBrowser_StatusMessage;
+            gameBrowser.AddressChanged += GameBrowser_AddressChanged;
 
             // Do music stuff
             string[] musicSamples = Directory.GetFiles("./Assets/music/background");
@@ -166,6 +169,11 @@ namespace WinLewdity
             client.Initialize();
         }
 
+        private void GameBrowser_AddressChanged(object? sender, AddressChangedEventArgs e)
+        {
+            AppLogger.LogDebug("Game browser url changed! New URL: " + e.Address);
+        }
+
         /// <summary>
         /// GameView Form Loaded
         /// </summary>
@@ -203,12 +211,6 @@ namespace WinLewdity
             // Load game
             if (gameBrowser != null)
             {
-                /*
-                while (!gameBrowser.IsBrowserInitialized)
-                {
-                    continue;
-                }
-                */
                 if (File.Exists("./game/index.html"))
                 {
                     gameBrowser.LoadUrl("file:///" + Path.GetFullPath("./game/index.html"));
@@ -217,6 +219,19 @@ namespace WinLewdity
 
             // Listen for story changes
             GameEvents.StoryProgressed += GameView_StoryProgressed;
+        }
+
+        private void GameBrowser_StatusMessage(object? sender, StatusMessageEventArgs e)
+        {
+            if (e.Value != String.Empty && e.Value != null)
+            {
+                AppLogger.LogDebug("Recieved status message: " + e.Value);
+            }
+        }
+
+        private void GameBrowser_LoadError(object? sender, LoadErrorEventArgs e)
+        {
+            AppLogger.LogError("Game browser loading error! Exception: " + e.ErrorText + " (" + e.ErrorCode + ")");
         }
 
         /// <summary>
@@ -244,8 +259,9 @@ namespace WinLewdity
         /// <param name="e"></param>
         private async void GameBrowser_FrameLoadEnd(object? sender, FrameLoadEndEventArgs e)
         {
-            if (e.Frame.IsMain)
+            if (e.Frame.IsMain && e.Frame.IsValid)
             {
+                AppLogger.LogDebug("Main game browser frame confirmed stable!");
             }
         }
 
@@ -264,6 +280,7 @@ namespace WinLewdity
             if (e.IsLoading == false)
             {
                 // Run code when game is loaded here
+                AppLogger.LogDebug("Game browser finished loading! Executing hooks!");
 
                 // Play background music
                 if (Globals.userPreferences.enableMusic)
@@ -293,11 +310,14 @@ namespace WinLewdity
                     if (Path.GetExtension(file) == ".js")
                     {
                         string jsCode = File.ReadAllText(file);
-                        gameBrowser.ExecuteScriptAsync(jsCode);
+                        JavascriptUtils.ExecuteJavascriptAsync(jsCode);
                     }
                     else
                     {
-                        File.Delete(file);
+                        ThreadPool.QueueUserWorkItem(new WaitCallback(delegate
+                        {
+                            File.Delete(file); // Remove any non-js files that pollute the JS directory.
+                        }));
                     }
                 }
 

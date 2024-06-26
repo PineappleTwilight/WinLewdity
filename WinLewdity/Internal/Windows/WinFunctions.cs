@@ -83,13 +83,14 @@ namespace WinLewdity_GUI.Internal.Windows
         /// Checks whether an update is available. Returns null if the repo didn't exist and was freshly created.
         /// </summary>
         /// <returns></returns>
-        public static bool? IsUpdateAvailable()
+        public static bool? IsGameUpdateAvailable()
         {
             if (Directory.Exists("./source/.git"))
             {
                 AppLogger.LogDebug("Source folder found!");
                 using (Repository repository = new Repository("./source"))
                 {
+                    AppLogger.LogDebug("Repository HEAD behind by " + repository.Head.TrackingDetails.BehindBy + " commit(s)");
                     if (repository.Head.TrackingDetails.BehindBy > 0)
                     {
                         return true;
@@ -111,12 +112,9 @@ namespace WinLewdity_GUI.Internal.Windows
         /// <summary>
         /// Attempts to update the game dynamically. Must be run on a threadpool.
         /// </summary>
-        public static void UpdateGame(Object threadstate)
+        public static void UpdateGame()
         {
             AppLogger.LogDebug("Attempting to update the game...");
-
-            // Fetch thread wait helper reference
-            AutoResetEvent are = (AutoResetEvent)threadstate;
 
             // Fetch current date and formulate versioning string
             DateTime date = DateTime.Now;
@@ -235,9 +233,6 @@ namespace WinLewdity_GUI.Internal.Windows
             // Scan game files and replace DoLP versions
             string compiledHtml = File.ReadAllText("./game/index.html");
             File.WriteAllText("./game/index.html", compiledHtml.Replace("DoLP version", $"WinLewdity {buildVersionText}"));
-
-            // Signal the end of this thread
-            are.Set();
         }
     }
 }

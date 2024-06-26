@@ -53,7 +53,11 @@ namespace WinLewdity.Internal
 
         [Description("Mellow's Combat Rework")]
         [ProtoEnum]
-        MVCR
+        MVCR,
+
+        [Description("Custom Image Pack")]
+        [ProtoEnum]
+        Custom
     }
 
     [ProtoContract]

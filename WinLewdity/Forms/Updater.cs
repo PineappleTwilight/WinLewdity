@@ -109,24 +109,29 @@ namespace WinLewdity
                 this.Text = Globals.AppName + " Updater v" + Globals.AppVersion + " (Debug Mode)";
             }
 
-            // Create game folder
-            if (!Directory.Exists("./game"))
+            // Create folders on a separate thread
+            ThreadPool.QueueUserWorkItem(new WaitCallback(delegate
             {
-                Directory.CreateDirectory("./game");
-            }
+                // Create game folder
+                if (!Directory.Exists("./game"))
+                {
+                    Directory.CreateDirectory("./game");
+                }
 
-            // Create source folder
-            if (!Directory.Exists("./source"))
-            {
-                Directory.CreateDirectory("./source");
-            }
+                // Create source folder
+                if (!Directory.Exists("./source"))
+                {
+                    Directory.CreateDirectory("./source");
+                }
+            }));
 
-            // Create logs folder
+            // Create logs folder on this thread
             if (!Directory.Exists("./logs"))
             {
                 Directory.CreateDirectory("./logs");
             }
 
+            AppLogger.LogDebug("--------------------------------------------------");
             AppLogger.LogInfo("Starting app...");
 
             // Check for existing user preferences
@@ -154,8 +159,11 @@ namespace WinLewdity
             // Init sex toy server
             if (Globals.userPreferences.enableSexToys)
             {
-                SextoyServerConnector sextoyServer = new SextoyServerConnector();
-                Globals.sextoyServer = sextoyServer;
+                ThreadPool.QueueUserWorkItem(new WaitCallback(delegate
+                {
+                    SextoyServerConnector sextoyServer = new SextoyServerConnector();
+                    Globals.sextoyServer = sextoyServer;
+                }));
             }
 
             // Populate ImagePack label
@@ -170,20 +178,24 @@ namespace WinLewdity
         /// <param name="e"></param>
         private void updateButton_Click(object sender, EventArgs e)
         {
-            DisableButtons();
-            bool? UpdateNeeded = WinFunctions.IsUpdateAvailable();
-            if (UpdateNeeded == true || UpdateNeeded == null)
+            ThreadPool.QueueUserWorkItem(new WaitCallback(delegate
             {
-                AutoResetEvent waitHandle = new AutoResetEvent(false);
-                ThreadPool.QueueUserWorkItem(new WaitCallback(WinFunctions.UpdateGame), waitHandle);
-                waitHandle.WaitOne(); // Wait for our thread to stop executing
-                MessageBox.Show("Updates successfully installed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (UpdateNeeded == false)
-            {
-                MessageBox.Show("Game is already up-to-date!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            EnableButtons();
+                Invoke(DisableButtons);
+                bool? UpdateNeeded = WinFunctions.IsGameUpdateAvailable();
+                if (UpdateNeeded == true || UpdateNeeded == null)
+                {
+                    // AutoResetEvent waitHandle = new AutoResetEvent(false);
+                    // ThreadPool.QueueUserWorkItem(new WaitCallback(WinFunctions.UpdateGame), waitHandle);
+                    // waitHandle.WaitOne(); // Wait for our thread to stop executing
+                    WinFunctions.UpdateGame();
+                    MessageBox.Show("Updates successfully installed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (UpdateNeeded == false)
+                {
+                    MessageBox.Show("Game is already up-to-date!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                Invoke(EnableButtons);
+            }));
         }
 
         /// <summary>
@@ -211,8 +223,8 @@ namespace WinLewdity
                 return;
             }
             GameView gameView = new GameView(this);
-            gameView.Show();
-            this.Hide();
+            Invoke(() => gameView.Show());
+            Invoke(() => this.Hide());
         }
 
         /// <summary>
