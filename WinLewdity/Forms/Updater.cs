@@ -67,6 +67,7 @@ namespace WinLewdity
         /// </summary>
         private void DisableButtons()
         {
+            this.ActiveControl = null;
             updateButton.Enabled = false;
             startButton.Enabled = false;
             musicFolderButton.Enabled = false;
@@ -351,9 +352,12 @@ namespace WinLewdity
 
         private void forceRecompileButton_Click(object sender, EventArgs e)
         {
-            DisableButtons();
-            WinFunctions.UpdateGame();
-            EnableButtons();
+            ThreadPool.QueueUserWorkItem(new WaitCallback(delegate
+            {
+                Invoke(DisableButtons);
+                WinFunctions.UpdateGame();
+                Invoke(EnableButtons);
+            }));
         }
     }
 }

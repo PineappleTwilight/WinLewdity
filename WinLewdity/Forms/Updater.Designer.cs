@@ -675,6 +675,7 @@
             Controls.Add(updaterMaterialCard);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Updater";
+            Sizable = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Updater";
             FormClosing += Updater_FormClosing;
