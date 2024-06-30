@@ -28,23 +28,25 @@ namespace WinLewdity
 {
     public partial class Updater : MaterialForm
     {
-        private readonly MaterialSkinManager materialSkinManager;
-        private bool UpdatesNeeded = false;
+        /// <summary>
+        /// Stupid skin manager class.
+        /// </summary>
+        private MaterialSkinManager MaterialSkinManager { get; } = MaterialSkinManager.Instance;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public Updater()
         {
             InitializeComponent();
 
-            // Initialize MaterialSkinManager
-            materialSkinManager = MaterialSkinManager.Instance;
-
             // Set this to false to disable backcolor enforcing on non-materialSkin components
             // This HAS to be set before the AddFormToManage()
-            materialSkinManager.EnforceBackcolorOnAllComponents = true;
+            MaterialSkinManager.EnforceBackcolorOnAllComponents = true;
 
             // MaterialSkinManager properties
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            MaterialSkinManager.AddFormToManage(this);
+            MaterialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
 
             // Init colorscheme
             Color richPurpleBase = (Color)new ColorConverter().ConvertFromString("#792187"); // 33% opacity
@@ -57,7 +59,7 @@ namespace WinLewdity
             //materialSkinManager.ColorScheme = new MaterialColorScheme(Color.Orange, Color.DarkOrange, Color.Orchid, Color.OrangeRed, Color.MediumOrchid);
             // https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors
             MaterialColorScheme materialColorScheme = new(richPurpleBase, richPurpleDark, richPurpleLight, richPurpleAccent, ReaLTaiizor.Util.MaterialTextShade.WHITESMOKE);
-            materialSkinManager.ColorScheme = materialColorScheme;
+            MaterialSkinManager.ColorScheme = materialColorScheme;
         }
 
         /// <summary>

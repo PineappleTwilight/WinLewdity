@@ -6,21 +6,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WinLewdity_GUI.Modloader.Statics
+namespace WinLewdity_GUI.Modloader.Parsers
 {
     /// <summary>
     /// Class that holds various functions related to AST.
     /// </summary>
-    public static class JavascriptParser
+    public class JavascriptParser
     {
-        private static Parser parser = new Parser();
+        /// <summary>
+        /// Main AST parser class.
+        /// </summary>
+        private Parser parser = new Parser();
 
         /// <summary>
         /// Parses raw JS code into AST.
         /// </summary>
         /// <param name="script"></param>
         /// <returns></returns>
-        public static Script ParseJavascript(string script)
+        public Script ParseJavascript(string script)
         {
             return parser.ParseScript(script);
         }
@@ -30,7 +33,7 @@ namespace WinLewdity_GUI.Modloader.Statics
         /// </summary>
         /// <param name="script"></param>
         /// <returns></returns>
-        public static string ParseAST(Script script)
+        public string ParseAST(Script script)
         {
             return script.ToJavaScript();
         }
