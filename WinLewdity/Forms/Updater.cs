@@ -72,6 +72,7 @@ namespace WinLewdity
             musicFolderButton.Enabled = false;
             logsFolderButton.Enabled = false;
             imagepackUpdaterButton.Enabled = false;
+            openCefLogsButton.Enabled = false;
         }
 
         /// <summary>
@@ -84,6 +85,7 @@ namespace WinLewdity
             musicFolderButton.Enabled = true;
             logsFolderButton.Enabled = true;
             imagepackUpdaterButton.Enabled = true;
+            openCefLogsButton.Enabled = true;
         }
 
         /// <summary>

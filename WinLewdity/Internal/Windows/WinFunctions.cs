@@ -1,4 +1,5 @@
 ﻿using LibGit2Sharp;
+using LibGit2Sharp.Handlers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -85,6 +86,21 @@ namespace WinLewdity_GUI.Internal.Windows
         }
 
         /// <summary>
+        /// Fetches a remote git repository and syncs changes.
+        /// </summary>
+        /// <param name="repository"></param>
+        public static void UpdateGitRepository(Repository repository)
+        {
+            var options = new FetchOptions();
+            options.Prune = true;
+            options.TagFetchMode = TagFetchMode.Auto;
+            var remote = repository.Network.Remotes["origin"];
+            var msg = "Fetching remote";
+            var refSpecs = remote.FetchRefSpecs.Select(x => x.Specification);
+            Commands.Fetch(repository, remote.Name, refSpecs, options, msg);
+        }
+
+        /// <summary>
         /// Checks whether an update is available. Returns null if the repo didn't exist and was freshly created.
         /// </summary>
         /// <returns></returns>
@@ -95,13 +111,20 @@ namespace WinLewdity_GUI.Internal.Windows
                 AppLogger.LogDebug("Source folder found!");
                 using (Repository repository = new Repository("./source"))
                 {
-                    AppLogger.LogDebug("Repository HEAD behind by " + repository.Head.TrackingDetails.BehindBy + " commit(s).");
-                    if (repository.Head.TrackingDetails.BehindBy > 0)
+                    // Fetch the remote repository
+                    UpdateGitRepository(repository);
+
+                    // Check for changes
+                    Branch masterBranch = repository.Branches["master"];
+                    AppLogger.LogDebug($"Branch '{masterBranch}' ahead by " + masterBranch.TrackingDetails.AheadBy + " commit(s).");
+                    AppLogger.LogDebug($"Branch '{masterBranch}' behind by " + masterBranch.TrackingDetails.BehindBy + " commit(s).");
+                    if (masterBranch.TrackingDetails.BehindBy > 0)
                     {
                         return true;
                     }
                     else
                     {
+                        AppLogger.LogDebug("Nothing to update! Local repository is synced with upstream!");
                         return false;
                     }
                 }
