@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Updater));
             updaterMaterialCard = new ReaLTaiizor.Controls.MaterialCard();
+            forceRecompileButton = new ReaLTaiizor.Controls.MaterialButton();
+            openCefLogsButton = new ReaLTaiizor.Controls.MaterialButton();
             materialShowTabControl1 = new ReaLTaiizor.Controls.MaterialShowTabControl();
             tabPage2 = new TabPage();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -60,7 +62,6 @@
             musicFolderButton = new ReaLTaiizor.Controls.MaterialButton();
             updateButton = new ReaLTaiizor.Controls.MaterialButton();
             startButton = new ReaLTaiizor.Controls.MaterialButton();
-            openCefLogsButton = new ReaLTaiizor.Controls.MaterialButton();
             updaterMaterialCard.SuspendLayout();
             materialShowTabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -72,6 +73,7 @@
             // updaterMaterialCard
             // 
             updaterMaterialCard.BackColor = Color.FromArgb(255, 255, 255);
+            updaterMaterialCard.Controls.Add(forceRecompileButton);
             updaterMaterialCard.Controls.Add(openCefLogsButton);
             updaterMaterialCard.Controls.Add(materialShowTabControl1);
             updaterMaterialCard.Controls.Add(materialDrawer1);
@@ -94,6 +96,53 @@
             updaterMaterialCard.Padding = new Padding(14);
             updaterMaterialCard.Size = new Size(1197, 477);
             updaterMaterialCard.TabIndex = 0;
+            // 
+            // forceRecompileButton
+            // 
+            forceRecompileButton.AutoSize = false;
+            forceRecompileButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            forceRecompileButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            forceRecompileButton.Depth = 0;
+            forceRecompileButton.Enabled = false;
+            forceRecompileButton.HighEmphasis = true;
+            forceRecompileButton.Icon = null;
+            forceRecompileButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            forceRecompileButton.Location = new Point(1035, 150);
+            forceRecompileButton.Margin = new Padding(4, 6, 4, 6);
+            forceRecompileButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            forceRecompileButton.Name = "forceRecompileButton";
+            forceRecompileButton.NoAccentTextColor = Color.Empty;
+            forceRecompileButton.Size = new Size(158, 36);
+            forceRecompileButton.TabIndex = 13;
+            forceRecompileButton.TabStop = false;
+            forceRecompileButton.Text = "Force Recompile";
+            forceRecompileButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            forceRecompileButton.UseAccentColor = false;
+            forceRecompileButton.UseVisualStyleBackColor = true;
+            forceRecompileButton.Click += forceRecompileButton_Click;
+            // 
+            // openCefLogsButton
+            // 
+            openCefLogsButton.AutoSize = false;
+            openCefLogsButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            openCefLogsButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            openCefLogsButton.Depth = 0;
+            openCefLogsButton.HighEmphasis = true;
+            openCefLogsButton.Icon = null;
+            openCefLogsButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            openCefLogsButton.Location = new Point(1035, 102);
+            openCefLogsButton.Margin = new Padding(4, 6, 4, 6);
+            openCefLogsButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            openCefLogsButton.Name = "openCefLogsButton";
+            openCefLogsButton.NoAccentTextColor = Color.Empty;
+            openCefLogsButton.Size = new Size(158, 36);
+            openCefLogsButton.TabIndex = 12;
+            openCefLogsButton.TabStop = false;
+            openCefLogsButton.Text = "Open CefSharp Logs";
+            openCefLogsButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            openCefLogsButton.UseAccentColor = false;
+            openCefLogsButton.UseVisualStyleBackColor = true;
+            openCefLogsButton.Click += openCefLogsButton_Click;
             // 
             // materialShowTabControl1
             // 
@@ -617,29 +666,6 @@
             startButton.Click += startButton_Click;
             startButton.Enter += PreventButtonFocus;
             // 
-            // openCefLogsButton
-            // 
-            openCefLogsButton.AutoSize = false;
-            openCefLogsButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            openCefLogsButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-            openCefLogsButton.Depth = 0;
-            openCefLogsButton.HighEmphasis = true;
-            openCefLogsButton.Icon = null;
-            openCefLogsButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            openCefLogsButton.Location = new Point(1035, 102);
-            openCefLogsButton.Margin = new Padding(4, 6, 4, 6);
-            openCefLogsButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            openCefLogsButton.Name = "openCefLogsButton";
-            openCefLogsButton.NoAccentTextColor = Color.Empty;
-            openCefLogsButton.Size = new Size(158, 36);
-            openCefLogsButton.TabIndex = 12;
-            openCefLogsButton.TabStop = false;
-            openCefLogsButton.Text = "Open CefSharp Logs";
-            openCefLogsButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-            openCefLogsButton.UseAccentColor = false;
-            openCefLogsButton.UseVisualStyleBackColor = true;
-            openCefLogsButton.Click += openCefLogsButton_Click;
-            // 
             // Updater
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -698,5 +724,6 @@
         private ReaLTaiizor.Controls.MaterialLabel materialLabel11;
         private ReaLTaiizor.Controls.LinkLabelEdit trelloLinkLabel;
         private ReaLTaiizor.Controls.MaterialButton openCefLogsButton;
+        private ReaLTaiizor.Controls.MaterialButton forceRecompileButton;
     }
 }

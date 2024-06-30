@@ -73,6 +73,11 @@ namespace WinLewdity
             logsFolderButton.Enabled = false;
             imagepackUpdaterButton.Enabled = false;
             openCefLogsButton.Enabled = false;
+            if (Globals.DebugMode)
+            {
+                // Debug only buttons
+                forceRecompileButton.Enabled = false;
+            }
         }
 
         /// <summary>
@@ -86,6 +91,11 @@ namespace WinLewdity
             logsFolderButton.Enabled = true;
             imagepackUpdaterButton.Enabled = true;
             openCefLogsButton.Enabled = true;
+            if (Globals.DebugMode)
+            {
+                // Debug only buttons
+                forceRecompileButton.Enabled = true;
+            }
         }
 
         /// <summary>
@@ -104,14 +114,15 @@ namespace WinLewdity
             // Init logging service
             AppLogger.InitializeLogger();
 
-            // Fancy update form title change
-            if (!Globals.DebugMode)
+            // Fancy debug mode changes
+            if (Globals.DebugMode)
             {
-                this.Text = Globals.AppName + " Updater v" + Globals.AppVersion;
+                this.Text = Globals.AppName + " Updater v" + Globals.AppVersion + " (Debug Mode)";
+                this.forceRecompileButton.Enabled = true;
             }
             else
             {
-                this.Text = Globals.AppName + " Updater v" + Globals.AppVersion + " (Debug Mode)";
+                this.Text = Globals.AppName + " Updater v" + Globals.AppVersion;
             }
 
             // Create folders on a separate thread
@@ -336,6 +347,13 @@ namespace WinLewdity
             {
                 WinFunctions.OpenFileInNotepad("./debug.log");
             }));
+        }
+
+        private void forceRecompileButton_Click(object sender, EventArgs e)
+        {
+            DisableButtons();
+            WinFunctions.UpdateGame();
+            EnableButtons();
         }
     }
 }

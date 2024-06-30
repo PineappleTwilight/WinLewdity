@@ -196,6 +196,12 @@ namespace WinLewdity_GUI.Internal.Windows
             // Move newly generated executable to game folder
             File.Move("./source/Degrees of Lewdity VERSION.html", "./game/index.html");
 
+            // Hardpatch executable for link replacements, etc
+            string gameHtml = File.ReadAllText("./game/index.html");
+            gameHtml = gameHtml.Replace("discord.gg/mGpRSn9qMF", "discord.gg/GX7sjmdRMQ"); // Replace modding server discord with mine lmao
+            gameHtml = gameHtml.Replace("https://discord.gg/mGpRSn9qMF", "https://discord.gg/GX7sjmdRMQ");
+            File.WriteAllText("./game/index.html", gameHtml);
+
             // Ensure graphic mods exist
             if (!Directory.Exists("./game/img"))
             {
